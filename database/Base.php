@@ -19,6 +19,14 @@ class Base {
       die("Connection failed: " . $this->conn->connect_error);
     }
   }
+
+  public function query($sql) {
+    return $this->conn->query($sql);
+  }
+
+  public function prepare($sql) {
+    return $this->conn->prepare($sql);
+}
 }
 
 ?>
