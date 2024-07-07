@@ -9,7 +9,7 @@ class Base {
   const PORT = 4306;
 
   // ATRIBUTI
-  public $conn;
+  protected $conn;
 
   // KONSTRUKTOR
   public function __construct() {
