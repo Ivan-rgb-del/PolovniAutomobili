@@ -67,12 +67,12 @@
         $user = $result->fetch_assoc();
 
         if (password_verify($password, $user['password'])) {
-          echo "Uspesno ste se ulogovali!";
+          echo "You are successfully loged in!";
         } else {
-          die("Pogresna sifra!");
+          die("Plese enter your password!");
         }
       } else {
-        die("user ne postoji!");
+        die("This user does not exist!");
       }
     }
   }
