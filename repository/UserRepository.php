@@ -45,6 +45,12 @@
     {
       return $this->conn->query("SELECT * FROM users WHERE email = '$email'");
     }
+
+    //login user
+    public function loginUser(User $user)
+    {
+      
+    }
   }
 
 ?>
