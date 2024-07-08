@@ -19,4 +19,6 @@
 
   $result = $userController->registerUser($firstName, $lastName, $email, $password, $role, $profileImage, $phoneNumber);
 
+  header("Location: views/index.php");
+
 ?>

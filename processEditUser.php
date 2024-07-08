@@ -13,4 +13,6 @@
 
   $result = $userController->editUser($email, $password);
 
+  header("Location: views/User/loginUserForm.php");
+
 ?>
