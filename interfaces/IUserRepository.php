@@ -3,7 +3,7 @@
   interface IUserRepository {
     public function registerUser(User $user);
     public function emailExist($email);
-    public function loginUser(User $user);
+    public function loginUser($email, $password);
   }
 
 ?>

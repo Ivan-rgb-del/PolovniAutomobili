@@ -47,9 +47,21 @@
     }
 
     //login user
-    public function loginUser(User $user)
+    public function loginUser($email, $password)
     {
-      
+      $email = $this->conn->realEscapeString($email);
+      $password = $this->conn->realEscapeString($password);
+
+      $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
+
+      $result = $this->conn->query("SELECT * FROM users WHERE email = '$email' AND password = '$password'");
+      if ($result->num_rows > 0) {
+        $user = $result->fetch_assoc();
+        echo "Uspesno ste se ulogovali!";
+      } else {
+        die("This user does not exist! Please check your email or password!");
+      }
+
     }
   }
 
