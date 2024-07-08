@@ -72,6 +72,29 @@
 
       return null;
     }
+
+    // edit for new password
+    public function editUser($email, $password)
+    {
+      $email = $this->conn->realEscapeString($email);
+      $password = $this->conn->realEscapeString($password);
+
+      $hashPassword = password_hash($password, PASSWORD_BCRYPT);
+
+      $stmt = $this->conn->prepare("SELECT * FROM users WHERE email = ?");
+      $stmt->bind_param("s", $email);
+      $stmt->execute();
+      $result = $stmt->get_result();
+
+      if ($result->num_rows == 1) {
+        $user = $result->fetch_assoc();
+        if ($user) {
+          return $this->conn->query("UPDATE users SET password = '$hashPassword' WHERE email = '$email'");
+        }
+      } else {
+        die("User does not exist!");
+      }
+    }
   }
 
 ?>

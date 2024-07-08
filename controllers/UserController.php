@@ -32,6 +32,11 @@
     public function loginUser($email, $password) {
       return $this->userRepository->loginUser($email, $password);
     }
+
+    // EDIT USER
+    public function editUser($email, $password) {
+      return $this->userRepository->editUser($email, $password);
+    }
   }
 
 ?>
