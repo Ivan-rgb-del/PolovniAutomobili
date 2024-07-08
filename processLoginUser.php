@@ -21,6 +21,7 @@
   if ($user) {
     $_SESSION['logged'] = true;
     $_SESSION['userId'] = $user['id'];
+    $_SESSION['userRole'] = $user['role'];
 
     header("Location: views/index.php");
     exit();

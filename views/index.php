@@ -18,8 +18,13 @@
   <h1>Welcome</h1>
 
   <ul>
-    <?php if (isset($_SESSION['logged'])): ?>
-      <a href="../processLogoutUser.php">Logout</a>
+    <?php if (isset($_SESSION['logged']) && $_SESSION['userRole'] == "seller"): ?>
+      <a href="../processLogoutUser.php">Logout</a><br>
+      <a href="#">Add new car</a><br>
+      <a href="#">Look for new car</a>
+    <?php elseif (isset($_SESSION['logged']) && $_SESSION['userRole'] == "user"): ?>
+      <a href="../processLogoutUser.php">Logout</a><br>
+      <a href="#">Look for new car</a>
     <?php else: ?>
       <a href="./User/registerUserForm.php">Register</a>
       <br>
