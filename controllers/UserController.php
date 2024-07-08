@@ -13,6 +13,7 @@
 
     public function registerUser($firstName, $lastName, $email, $password, $role, $profileImage, $phoneNumber) {
       $newUser = new User();
+
       $newUser->firstName = $firstName;
       $newUser->lastName = $lastName;
       $newUser->email = $email;

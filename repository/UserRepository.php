@@ -13,18 +13,35 @@
     }
 
     public function registerUser(User $user) {
+      $firstName = $this->conn->realEscapeString($user->firstName);
+      $lastName = $this->conn->realEscapeString($user->lastName);
+      $email = $this->conn->realEscapeString($user->email);
+      $password = $this->conn->realEscapeString($user->password);
+      $role = $this->conn->realEscapeString($user->role);
+      $profileImage = $this->conn->realEscapeString($user->profileImage);
+      $phoneNumber = $this->conn->realEscapeString($user->phoneNumber);
+
       $stmt = $this->conn->prepare("INSERT INTO users (first_name, last_name, email, password, role, profile_image, phone_number) VALUES (?, ?, ?, ?, ?, ?, ?)");
       if (!$stmt) {
         die("Error preparing statement!");
       }
 
-      $stmt->bind_param("ssssssi", $user->firstName, $user->lastName, $user->email, $user->password, $user->role, $user->profileImage, $user->phoneNumber);
+      if ($this->emailExist($email)) {
+        die("This email already exist!");
+      }
+
+      $stmt->bind_param("ssssssi", $firstName, $lastName, $email, $password, $role, $profileImage, $phoneNumber);
 
       if ($stmt->execute() === false) {
         die("Error executing statement: " . $stmt->error);
       }
 
       $stmt->close();
+    }
+
+    public function emailExist($email)
+    {
+      return $this->conn->query("SELECT * FROM users WHERE email = '$email'");
     }
   }
 
