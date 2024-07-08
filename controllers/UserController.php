@@ -11,6 +11,7 @@
       $this->userRepository = $userRepository;
     }
 
+    // REGISTER
     public function registerUser($firstName, $lastName, $email, $password, $role, $profileImage, $phoneNumber) {
       $newUser = new User();
 
@@ -27,6 +28,7 @@
       return "User added successfully!";
     }
 
+    // LOGIN
     public function loginUser($email, $password) {
       return $this->userRepository->loginUser($email, $password);
     }

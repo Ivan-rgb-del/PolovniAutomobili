@@ -1,3 +1,11 @@
+<?php
+
+  if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+  }
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,9 +18,13 @@
   <h1>Welcome</h1>
 
   <ul>
-    <a href="./User/registerUserForm.php">Register</a>
-    <br>
-    <a href="./User/loginUserForm.php">Login</a>
+    <?php if (isset($_SESSION['logged'])): ?>
+      <a href="../processLogoutUser.php">Logout</a>
+    <?php else: ?>
+      <a href="./User/registerUserForm.php">Register</a>
+      <br>
+      <a href="./User/loginUserForm.php">Login</a>
+    <?php endif; ?>
   </ul>
 
 </body>

@@ -65,15 +65,12 @@
 
       if ($result->num_rows === 1) {
         $user = $result->fetch_assoc();
-
         if (password_verify($password, $user['password'])) {
-          echo "You are successfully loged in!";
-        } else {
-          die("Plese enter your password!");
+          return $user;
         }
-      } else {
-        die("This user does not exist!");
       }
+
+      return null;
     }
   }
 
