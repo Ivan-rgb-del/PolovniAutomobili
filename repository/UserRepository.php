@@ -12,6 +12,7 @@
       $this->conn = $base;
     }
 
+    // register new user
     public function registerUser(User $user) {
       $firstName = $this->conn->realEscapeString($user->firstName);
       $lastName = $this->conn->realEscapeString($user->lastName);
@@ -39,6 +40,7 @@
       $stmt->close();
     }
 
+    // check if email exist
     public function emailExist($email)
     {
       return $this->conn->query("SELECT * FROM users WHERE email = '$email'");
