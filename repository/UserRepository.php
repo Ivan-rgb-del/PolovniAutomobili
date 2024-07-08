@@ -43,7 +43,13 @@
     // check if email exist
     public function emailExist($email)
     {
-      return $this->conn->query("SELECT * FROM users WHERE email = '$email'");
+      $result = $this->conn->query("SELECT * FROM users WHERE email = '$email'");
+
+      if (!$result) {
+        return true;
+      } else {
+        return false;
+      }
     }
 
     //login user
@@ -52,16 +58,22 @@
       $email = $this->conn->realEscapeString($email);
       $password = $this->conn->realEscapeString($password);
 
-      $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
+      $stmt = $this->conn->prepare("SELECT * FROM users WHERE email = ?");
+      $stmt->bind_param("s", $email);
+      $stmt->execute();
+      $result = $stmt->get_result();
 
-      $result = $this->conn->query("SELECT * FROM users WHERE email = '$email' AND password = '$password'");
-      if ($result->num_rows > 0) {
+      if ($result->num_rows === 1) {
         $user = $result->fetch_assoc();
-        echo "Uspesno ste se ulogovali!";
-      } else {
-        die("This user does not exist! Please check your email or password!");
-      }
 
+        if (password_verify($password, $user['password'])) {
+          echo "Uspesno ste se ulogovali!";
+        } else {
+          die("Pogresna sifra!");
+        }
+      } else {
+        die("user ne postoji!");
+      }
     }
   }
 

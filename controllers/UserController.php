@@ -28,8 +28,7 @@
     }
 
     public function loginUser($email, $password) {
-      $this->userRepository->loginUser($email, $password);
-      return "User login successfully!";
+      return $this->userRepository->loginUser($email, $password);
     }
   }
 
