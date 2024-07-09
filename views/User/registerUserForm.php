@@ -8,7 +8,7 @@
 <body>
 
   <h1>Register User</h1>
-  <form action="../../processRegisterUser.php" method="POST">
+  <form action="../../processRegisterUser.php" method="POST" enctype="multipart/form-data">
     <label for="firstName">First Name:</label>
     <input type="text" name="firstName" id="firstName" required><br><br>
 
@@ -27,13 +27,13 @@
       <option value="user">User</option>
     </select><br><br>
 
-    <label for="profileImage">Profile Image:</label>
-    <input type="text" name="profileImage" id="profileImage" required><br><br>
+    Select image to upload:
+    <input type="file" name="fileToUpload" id="fileToUpload"><br><br>
 
     <label for="phoneNumber">Phone Number:</label>
     <input type="int" name="phoneNumber" id="phoneNumber" required><br><br>
 
-    <button>Register New User</button>
+    <input type="submit" value="Register User" name="submit">
   </form>
 
 </body>
