@@ -20,7 +20,7 @@
   <ul>
     <?php if (isset($_SESSION['logged']) && $_SESSION['userRole'] == "seller"): ?>
       <a href="../processLogoutUser.php">Logout</a><br>
-      <a href="#">Add new car</a><br>
+      <a href="./Ads/createAdForm.php">Add new car</a><br>
       <a href="#">Look for new car</a>
     <?php elseif (isset($_SESSION['logged']) && $_SESSION['userRole'] == "user"): ?>
       <a href="../processLogoutUser.php">Logout</a><br>

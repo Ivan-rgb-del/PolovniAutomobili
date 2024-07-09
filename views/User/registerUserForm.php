@@ -22,7 +22,10 @@
     <input type="password" name="password" id="password" required><br><br>
 
     <label for="role">Role:</label>
-    <input type="text" name="role" id="role" required><br><br>
+    <select name="role" id="role">
+      <option value="seller">Seller</option>
+      <option value="user">User</option>
+    </select><br><br>
 
     <label for="profileImage">Profile Image:</label>
     <input type="text" name="profileImage" id="profileImage" required><br><br>
