@@ -16,15 +16,14 @@
 
   $user = $userController->loginUser($email, $password);
 
-  if ($user) {
-    $_SESSION['logged'] = true;
-    $_SESSION['userId'] = $user['id'];
-    $_SESSION['userRole'] = $user['role'];
-
-    header("Location: views/index.php");
-    exit();
-  } else {
-    die("Invalid email or password!");
+  if (!$user) {
+    return null;
   }
+
+  $_SESSION['logged'] = true;
+  $_SESSION['userId'] = $user['id'];
+  $_SESSION['userRole'] = $user['role'];
+
+  header("Location: views/index.php");
 
 ?>

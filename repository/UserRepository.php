@@ -45,10 +45,7 @@
       $email = $this->conn->real_escape_string($email);
       $password = $this->conn->real_escape_string($password);
 
-      $stmt = $this->conn->prepare("SELECT * FROM users WHERE email = ?");
-      $stmt->bind_param("s", $email);
-      $stmt->execute();
-      $result = $stmt->get_result();
+      $result = $this->emailExist($email);
 
       if ($result->num_rows === 1) {
         $user = $result->fetch_assoc();
@@ -68,12 +65,9 @@
 
       $hashPassword = password_hash($password, PASSWORD_BCRYPT);
 
-      $stmt = $this->conn->prepare("SELECT * FROM users WHERE email = ?");
-      $stmt->bind_param("s", $email);
-      $stmt->execute();
-      $result = $stmt->get_result();
+      $result = $this->emailExist($email);
 
-      if ($result->num_rows == 1) {
+      if ($result->num_rows === 1) {
         $user = $result->fetch_assoc();
         if ($user) {
           return $this->conn->query("UPDATE users SET password = '$hashPassword' WHERE email = '$email'");
