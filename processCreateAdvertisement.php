@@ -1,12 +1,10 @@
 <?php
 
-  require_once __DIR__ . "/database/Base.php";
   require_once __DIR__ . "/repository/AdvertisementRepository.php";
   require_once __DIR__ . "/controllers/AdvertisementController.php";
   require_once __DIR__ . "/interfaces/IAdvertisementRepository.php";
 
-  $base = new Base();
-  $adsRepo = new AdvertisementRepository($base);
+  $adsRepo = new AdvertisementRepository();
   $adsController = new AdvertisementController($adsRepo);
 
   $title = $_POST['title'];

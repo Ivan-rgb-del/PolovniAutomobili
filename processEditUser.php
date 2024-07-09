@@ -1,11 +1,9 @@
 <?php
 
-  require_once "database/Base.php";
   require_once "repository/UserRepository.php";
   require_once "controllers/UserController.php";
 
-  $base = new Base();
-  $userRepo = new UserRepository($base);
+  $userRepo = new UserRepository();
   $userController = new UserController($userRepo);
 
   $email = $_POST['email'];

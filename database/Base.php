@@ -28,9 +28,9 @@ class Base {
     return $this->conn->prepare($sql);
   }
 
-  public function realEscapeString($input) {
-    return $this->conn->real_escape_string($input);
-  }
+  // public function realEscapeString($input) {
+  //   return $this->conn->real_escape_string($input);
+  // }
 }
 
 ?>

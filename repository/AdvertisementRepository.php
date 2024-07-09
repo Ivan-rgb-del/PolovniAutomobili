@@ -8,27 +8,20 @@
     session_start();
   }
 
-  class AdvertisementRepository implements IAdvertisementRepository {
-    private Base $conn;
-
-    public function __construct(Base $base)
-    {
-      $this->conn = $base;
-    }
-
+  class AdvertisementRepository extends Base implements IAdvertisementRepository {
     // Method for creating ads
     public function createAdvertisement(Advertisement $advertisement)
     {
-      $title = $this->conn->realEscapeString($advertisement->title);
-      $price = $this->conn->realEscapeString($advertisement->price);
-      $description = $this->conn->realEscapeString($advertisement->description);
-      $firstRegistration = $this->conn->realEscapeString($advertisement->firstRegistration);
-      $fuelType = $this->conn->realEscapeString($advertisement->fuelType);
+      $title = $this->conn->real_escape_string($advertisement->title);
+      $price = $this->conn->real_escape_string($advertisement->price);
+      $description = $this->conn->real_escape_string($advertisement->description);
+      $firstRegistration = $this->conn->real_escape_string($advertisement->firstRegistration);
+      $fuelType = $this->conn->real_escape_string($advertisement->fuelType);
 
       $userId = $_SESSION['userId'];
 
-      $categoryId = $this->conn->realEscapeString($advertisement->categoryId);
-      $subCategory = $this->conn->realEscapeString($advertisement->subCategory);
+      $categoryId = $this->conn->real_escape_string($advertisement->categoryId);
+      $subCategory = $this->conn->real_escape_string($advertisement->subCategory);
 
       // Calling the user ad count function
       $countOfUserAds = $this->countOfCreatedAdsByUser($userId);
