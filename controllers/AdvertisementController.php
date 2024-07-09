@@ -12,7 +12,9 @@
     }
 
     // CREATE AD
-    public function createAdvertisement($title, $price, $description, $firstRegistration, $fuelType, $categoryId, $userId, $subCategory) {
+    public function createAdvertisement(
+      string $title, string $price, string $description, string $firstRegistration, string $fuelType, int $categoryId, int $userId, int $subCategory
+    ) {
       $newAdvertisement = new Advertisement();
 
       $newAdvertisement->title = $title;

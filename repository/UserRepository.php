@@ -5,6 +5,8 @@
   require_once "interfaces/IUserRepository.php";
 
   class UserRepository extends Base implements IUserRepository {
+    // protected Base $conn;
+
     // register new user
     public function registerUser(User $user) {
       $firstName = $this->conn->real_escape_string($user->firstName);
@@ -20,7 +22,8 @@
         die("Error preparing statement!");
       }
 
-      if ($this->emailExist($email)) {
+      $user = $this->emailExist($email);
+      if (!$user) {
         die("This email already exist!");
       }
 
@@ -36,7 +39,11 @@
     // check if email exist
     public function emailExist($email)
     {
-      return $this->conn->query("SELECT * FROM users WHERE email = '$email'");
+      $stmt = $this->conn->prepare("SELECT * FROM users WHERE email = ?");
+      $stmt->bind_param("s", $email);
+      $user = $stmt->execute();
+
+      return $user;
     }
 
     //login user
@@ -45,7 +52,10 @@
       $email = $this->conn->real_escape_string($email);
       $password = $this->conn->real_escape_string($password);
 
-      $result = $this->emailExist($email);
+      $stmt = $this->conn->prepare("SELECT * FROM users WHERE email = ?");
+      $stmt->bind_param("s", $email);
+      $stmt->execute();
+      $result = $stmt->get_result();
 
       if ($result->num_rows === 1) {
         $user = $result->fetch_assoc();
@@ -65,16 +75,19 @@
 
       $hashPassword = password_hash($password, PASSWORD_BCRYPT);
 
-      $result = $this->emailExist($email);
+      $stmt = $this->conn->prepare("SELECT * FROM users WHERE email = ?");
+      $stmt->bind_param("s", $email);
+      $stmt->execute();
+      $result = $stmt->get_result();
 
-      if ($result->num_rows === 1) {
+      if ($result->num_rows == 1) {
         $user = $result->fetch_assoc();
         if ($user) {
           return $this->conn->query("UPDATE users SET password = '$hashPassword' WHERE email = '$email'");
         }
-      } else {
-        die("User does not exist!");
       }
+
+      return null;
     }
   }
 

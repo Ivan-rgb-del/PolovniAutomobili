@@ -12,7 +12,9 @@
     }
 
     // REGISTER
-    public function registerUser($firstName, $lastName, $email, $password, $role, $profileImage, $phoneNumber) {
+    public function registerUser(
+      string $firstName, string $lastName, string $email, string $password, string $role, string $profileImage, int $phoneNumber
+    ) {
       $newUser = new User();
 
       $newUser->firstName = $firstName;
@@ -29,12 +31,12 @@
     }
 
     // LOGIN
-    public function loginUser($email, $password) {
+    public function loginUser(string $email, string $password) {
       return $this->userRepository->loginUser($email, $password);
     }
 
     // EDIT USER
-    public function editUser($email, $password) {
+    public function editUser(string $email, string $password) {
       return $this->userRepository->editUser($email, $password);
     }
   }
