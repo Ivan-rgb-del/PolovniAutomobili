@@ -43,8 +43,6 @@
       $adImage->imageUrl = $url;
       $adImage->advertisementId = $lastAdvertisementId;
       $this->adImageRepository->addImageForAd($adImage);
-
-      echo "Uspesno kreiran oglas sa slikom";
     }
   }
 
