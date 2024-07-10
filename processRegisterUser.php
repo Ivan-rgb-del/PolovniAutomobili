@@ -14,7 +14,7 @@
   $role = $_POST['role'];
   $phoneNumber = $_POST['phoneNumber'];
 
-  $target_dir = "assets/pictures/";
+  $target_dir = "assets/pictures/UserPictures/";
   $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
   $uploadOk = 1;
   $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));

@@ -46,9 +46,8 @@
       <option value="natural gas">Natural Gas</option>
     </select><br><br>
 
-    <!-- category_id, sub_vategory da bude option -->
     <label for="categories">Categories:</label>
-    <select name="categories" id="categories"> <!-- onchange="showSubCategories() -->
+    <select name="categories" id="categories">
       <option value="">Select</option>
       <option value="1">Car</option>
       <option value="2">Van</option>
@@ -66,29 +65,9 @@
       <option value="7">Cargo</option>
     </select><br><br>
 
-    <!-- <div class="carSubcategories hidden">
-      <label for="carTypes">Car Types:</label>
-      <select name="carTypes" id="carTypes">
-        <option value="1">Combi</option>
-        <option value="2">Limousine</option>
-        <option value="3">Convertible</option>
-        <option value="4">Coupe</option>
-        <option value="5">SUV</option>
-      </select><br><br>
-    </div>
-
-    <div class="vanSubcategories hidden">
-      <label for="vanTypes">Van Types:</label>
-      <select name="vanTypes" id="vanTypes">
-        <option value="6">Minivan</option>
-        <option value="7">Cargo Van</option>
-      </select><br><br>
-    </div> -->
-
-    <!-- user_id -->
     <input type="hidden" name="userId" value="<?= $userId ?>">
 
-    <button>Add ad</button>
+    <button type="submit" name="upload">Add ad</button>
   </form>
 
   <script src="../../assets/js/main.js"></script>

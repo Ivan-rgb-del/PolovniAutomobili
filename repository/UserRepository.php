@@ -5,8 +5,6 @@
   require_once "interfaces/IUserRepository.php";
 
   class UserRepository extends Base implements IUserRepository {
-    // protected Base $conn;
-
     // register new user
     public function registerUser(User $user) {
       $firstName = $this->conn->real_escape_string($user->firstName);
