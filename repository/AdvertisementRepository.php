@@ -38,6 +38,11 @@
       }
     }
 
+    public function getLastInsertId()
+    {
+      return $this->conn->insert_id;
+    }
+
     // Method to calculate the number of posts created by a user
     public function countOfCreatedAdsByUser($userId)
     {

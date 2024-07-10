@@ -19,7 +19,7 @@
 
   <h1>Post an ad</h1>
 
-  <form action="../../processCreateAdvertisement.php" method="POST">
+  <form action="../../processCreateAdvertisement.php" method="POST" enctype="multipart/form-data">
     <label for="title">Title:</label>
     <input type="text" name="title" id="title" required><br><br>
 
@@ -62,8 +62,8 @@
 
     <input type="hidden" name="userId" value="<?= $userId ?>">
 
-    <label for="image">Select image for ad:</label>
-    <input type="file" name="image" id="image" accept="image/*"><br><br>
+    <label for="adImageToUpload">Select image for ad:</label>
+    <input type="file" name="adImageToUpload" id="adImageToUpload" required><br><br>
 
     <button type="submit" name="upload">Add ad</button>
   </form>
