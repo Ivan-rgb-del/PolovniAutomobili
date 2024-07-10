@@ -14,11 +14,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Add vehicle</title>
-  <style>
-    .hidden {
-      display: none;
-    }
-    </style>
 </head>
 <body>
 
@@ -66,6 +61,9 @@
     </select><br><br>
 
     <input type="hidden" name="userId" value="<?= $userId ?>">
+
+    <label for="image">Select image for ad:</label>
+    <input type="file" name="image" id="image" accept="image/*"><br><br>
 
     <button type="submit" name="upload">Add ad</button>
   </form>

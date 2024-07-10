@@ -13,7 +13,9 @@
 
     // CREATE AD
     public function createAdvertisement(
-      string $title, string $price, string $description, string $firstRegistration, string $fuelType, int $categoryId, int $userId, int $subCategory
+      string $title, string $price, string $description,
+      string $firstRegistration, string $fuelType, int $categoryId,
+      int $userId, int $subCategory
     ) {
       $newAdvertisement = new Advertisement();
 
@@ -27,6 +29,7 @@
       $newAdvertisement->subCategory = $subCategory;
 
       $this->advertisementRepository->createAdvertisement($newAdvertisement);
+
     }
   }
 
