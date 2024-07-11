@@ -39,6 +39,10 @@
     public function editUser(string $email, string $password) {
       return $this->userRepository->editUser($email, $password);
     }
+
+    public function getUserAds($userId) {
+      return $this->userRepository->getUserAds($userId);
+    }
   }
 
 ?>

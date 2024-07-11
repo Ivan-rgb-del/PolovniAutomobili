@@ -87,6 +87,16 @@
 
       return null;
     }
+
+    public function getUserAds($userId)
+    {
+      $stmt = $this->conn->prepare("SELECT * FROM ads WHERE user_id = ?");
+      $stmt->bind_param("i", $userId);
+      $stmt->execute();
+      $result = $stmt->get_result();
+
+      var_dump($result);
+    }
   }
 
 ?>
