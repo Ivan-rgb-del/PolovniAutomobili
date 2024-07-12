@@ -33,7 +33,13 @@
 
   <?php foreach($advertisement as $ad): ?>
     <h3> Model: <?= $ad['title'] ?> </h3>
-    <img src="assets/pictures/AdPictures/<?= $adImageController->getImageOfAd($ad['id']) ?>" alt="Not found" style="width: 250px;">
+
+    <?php if ($adImageController->getImageOfAd($ad['id'])): ?>
+      <img src="assets/pictures/AdPictures/<?= $adImageController->getImageOfAd($ad['id']) ?>" alt="Ad picture" style="width: 250px;">
+    <?php else: ?>
+      <img src="assets/pictures/AdPictures/notFound.png" alt="Not found" style="width: 250px;">
+    <?php endif; ?>
+
     <p> Price: <?= $ad['price'] ?> </p>
     <p> Description: <?= $ad['description'] ?> </p>
     <p> First registartion: <?= $ad['first_registration'] ?> </p>
@@ -44,6 +50,9 @@
     <?php else: ?>
       <p> Type: Van</p>
     <?php endif; ?>
+
+    <a href="#">Delete</a><br>
+    <a href="#">Edit</a><br><br>
   <?php endforeach; ?>
 
 </body>

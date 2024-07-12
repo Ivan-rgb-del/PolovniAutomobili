@@ -21,7 +21,12 @@
       $result = $stmt->get_result();
       $imageUrl = $result->fetch_assoc();
 
+      if ($result->num_rows == 0) {
+        return null;
+      }
+
       return $imageUrl["URL"];
+
     }
   }
 
