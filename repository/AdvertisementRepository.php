@@ -34,7 +34,7 @@
           "
         );
       } else {
-        die("Sorry but are able to make just 3 advertisement!");
+        return null;
       }
     }
 
