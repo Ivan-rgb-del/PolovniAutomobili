@@ -3,7 +3,6 @@
   if (session_status() == PHP_SESSION_NONE) {
     session_start();
   }
-  $userId = $_SESSION["userId"];
 
 ?>
 
@@ -22,8 +21,7 @@
     <?php if (isset($_SESSION['logged']) && $_SESSION['userRole'] == "seller"): ?>
       <a href="../processLogoutUser.php">Logout</a><br>
       <a href="./Ads/createAdForm.php">Add new car</a><br>
-      <a href="./User/displaySellerCars.php?userId=<?= $userId ?>">My cars</a><br>
-      <a href="../processShowUserAds.php">test</a>
+      <a href="../processShowUserAds.php">My advertisement</a>
     <?php elseif (isset($_SESSION['logged']) && $_SESSION['userRole'] == "user"): ?>
       <a href="../processLogoutUser.php">Logout</a><br>
       <a href="#">Look for new car</a>

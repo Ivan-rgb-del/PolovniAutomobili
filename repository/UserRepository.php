@@ -95,7 +95,11 @@
       $stmt->execute();
       $result = $stmt->get_result();
 
-      var_dump($result);
+      if ($result->num_rows == 0) {
+        return null;
+      }
+
+      return $result->fetch_all(MYSQLI_ASSOC);
     }
   }
 
