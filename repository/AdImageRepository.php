@@ -12,6 +12,17 @@
       $stmt->execute();
       $stmt->close();
     }
+
+    public function getImageOfAd($adId)
+    {
+      $stmt = $this->conn->prepare("SELECT URL from ad_images where ads_id = ?");
+      $stmt->bind_param("i", $adId);
+      $stmt->execute();
+      $result = $stmt->get_result();
+      $imageUrl = $result->fetch_assoc();
+
+      return $imageUrl["URL"];
+    }
   }
 
 ?>
