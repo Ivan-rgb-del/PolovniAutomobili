@@ -44,6 +44,10 @@
       $adImage->advertisementId = $lastAdvertisementId;
       $this->adImageRepository->addImageForAd($adImage);
     }
+
+    public function deleteAdvertisement($idAd) {
+      $this->advertisementRepository->deleteAdvertisement($idAd);
+    }
   }
 
 ?>

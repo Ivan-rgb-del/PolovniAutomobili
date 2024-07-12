@@ -15,6 +15,10 @@
     public function getImageOfAd($adId) {
       return $this->adImageRepository->getImageOfAd($adId);
     }
+
+    public function deleteAdvertisementImage($adId) {
+      return $this->adImageRepository->deleteAdvertisementImage($adId);
+    }
   }
 
 ?>

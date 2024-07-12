@@ -63,7 +63,7 @@
     <input type="hidden" name="userId" value="<?= $userId ?>">
 
     <label for="adImageToUpload">Select image for ad:</label>
-    <input type="file" name="adImageToUpload" id="adImageToUpload" required><br><br>
+    <input type="file" name="adImageToUpload" id="adImageToUpload"><br><br>
 
     <button type="submit" name="upload">Add ad</button>
   </form>

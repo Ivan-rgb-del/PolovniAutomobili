@@ -26,7 +26,13 @@
       }
 
       return $imageUrl["URL"];
+    }
 
+    public function deleteAdvertisementImage($adId)
+    {
+      $stmt = $this->conn->prepare("DELETE FROM ad_images WHERE ads_id = ?");
+      $stmt->bind_param("i", $adId);
+      $stmt->execute();
     }
   }
 

@@ -57,6 +57,13 @@
 
       return $count;
     }
+
+    public function deleteAdvertisement($adId)
+    {
+      $stmt = $this->conn->prepare("DELETE FROM ads WHERE id = ?");
+      $stmt->bind_param("i", $adId);
+      $stmt->execute();
+    }
   }
 
 ?>
