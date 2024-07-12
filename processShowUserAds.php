@@ -52,7 +52,7 @@
     <?php endif; ?>
 
     <a href="processDeleteAdvertisement.php?advertisementId=<?= $ad['id'] ?>">Delete</a><br>
-    <a href="#">Edit</a><br><br>
+    <a href="views/Ads/editSellerAdForm.php?advertisementId=<?= $ad['id'] ?>">Edit</a><br><br>
   <?php endforeach; ?>
 
 </body>

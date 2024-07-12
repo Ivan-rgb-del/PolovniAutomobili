@@ -64,6 +64,11 @@
       $stmt->bind_param("i", $adId);
       $stmt->execute();
     }
+
+    public function editAdvertisement(Advertisement $advertisement)
+    {
+      
+    }
   }
 
 ?>
