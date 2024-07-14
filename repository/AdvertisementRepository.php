@@ -87,6 +87,14 @@
       $stmt->execute();
       $stmt->close();
     }
+
+    public function getAdvertisementId($adId)
+    {
+      $stmt = $this->conn->prepare("SELECT * FROM ads WHERE id=?");
+      $stmt->bind_param("i", $adId);
+      $stmt->execute();
+      $stmt->close();
+    }
   }
 
 ?>

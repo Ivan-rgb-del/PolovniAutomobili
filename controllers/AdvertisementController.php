@@ -71,6 +71,10 @@
         $this->adImageRepository->addImageForAd($adImage);
       }
     }
+
+    public function getAdId($adId) {
+      return $this->advertisementRepository->getAdvertisementId($adId);
+    }
   }
 
 ?>
