@@ -34,6 +34,24 @@
       $stmt->bind_param("i", $adId);
       $stmt->execute();
     }
+
+    public function editAdvertisementImage(AdImage $adImage)
+    {
+      $stmt = $this->conn->prepare(
+        "UPDATE ad_images
+        SET URL=?
+        WHERE ads_id=?
+      ");
+
+      $stmt->bind_param(
+        "si",
+        $adImage->imageUrl,
+        $adImage->advertisementId
+      );
+
+      $stmt->execute();
+      $stmt->close();
+    }
   }
 
 ?>

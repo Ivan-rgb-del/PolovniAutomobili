@@ -51,6 +51,7 @@
 
     public function editAdvertisement($id, $title, $price, $description, $firstRegistration, $fuelType, $categoryId, $subCategory, $url = null) {
       $newAd = new Advertisement();
+      $adImage = new AdImage();
 
       $newAd->id = $id;
       $newAd->title = $title;

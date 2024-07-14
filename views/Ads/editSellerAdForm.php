@@ -17,7 +17,7 @@
   <h1>Edit your advertisement:</h1>
 
   <form action="../../processEditSellerAdvertisement.php" method="POST" enctype="multipart/form-data">
-  <input type="hidden" name="id" value="<?= $adId ?>">
+    <input type="hidden" name="id" value="<?= $adId ?>">
 
     <label for="title">Title:</label>
     <input type="text" name="title" id="title" required><br><br>

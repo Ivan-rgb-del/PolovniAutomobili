@@ -19,6 +19,15 @@
     public function deleteAdvertisementImage($adId) {
       return $this->adImageRepository->deleteAdvertisementImage($adId);
     }
+
+    public function editAdImage($url, $adId) {
+      $newAdImage = new AdImage();
+
+      $newAdImage->imageUrl = $url;
+      $newAdImage->advertisementId = $adId;
+
+      $this->adImageRepository->editAdvertisementImage($newAdImage);
+    }
   }
 
 ?>

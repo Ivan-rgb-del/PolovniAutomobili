@@ -8,6 +8,7 @@
   $adImageRepo = new AdImageRepository();
   $adRepo = new AdvertisementRepository();
   $adController = new AdvertisementController($adRepo, $adImageRepo);
+  $adImageController = new AdImageController($adImageRepo);
 
   $id = $_POST['id'];
   $title = $_POST['title'];
@@ -57,6 +58,7 @@
   }
 
   $url = $_FILES["adImageToUpload"]["name"];
+  $editedImage = $adImageController->editAdImage($url, $id);
 
   $adController->editAdvertisement(
     $id,
@@ -67,7 +69,7 @@
     $fuelType,
     $categoryId,
     $subCategoryId,
-    $url
+    $editedImage
   );
 
 ?>
