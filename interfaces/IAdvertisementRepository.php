@@ -8,6 +8,7 @@
     public function editAdvertisement(Advertisement $advertisement);
     public function getAdvertisementId($adId);
     public function getAllAdvertisement();
+    public function filterAdsByTitle($input);
   }
 
 ?>

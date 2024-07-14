@@ -111,6 +111,21 @@
 
       return $result->fetch_all(MYSQLI_ASSOC);
     }
+
+    public function filterAdsByTitle($input)
+    {
+      $input = '%' . $input . '%';
+      $stmt = $this->conn->prepare("SELECT * FROM ads WHERE title LIKE ?");
+      $stmt->bind_param("s", $input);
+      $stmt->execute();
+      $result = $stmt->get_result();
+
+      if ($result->num_rows === 0) {
+        return null;
+      }
+
+      return $result->fetch_all(MYSQLI_ASSOC);
+    }
   }
 
 ?>

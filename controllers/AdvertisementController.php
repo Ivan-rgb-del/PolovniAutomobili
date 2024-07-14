@@ -79,6 +79,10 @@
     public function getAllAdvertisement() {
       return $this->advertisementRepository->getAllAdvertisement();
     }
+
+    public function filterAdsByTitle($input) {
+      return $this->advertisementRepository->filterAdsByTitle($input);
+    }
   }
 
 ?>

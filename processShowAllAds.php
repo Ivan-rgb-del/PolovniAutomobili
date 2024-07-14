@@ -25,6 +25,12 @@
 
   <h1>All Advertisement</h1>
 
+  <form action="processFilterAds.php" method="POST">
+    <label for="title">Enter title for ad</label><br>
+    <input type="text" name="title" id="title">
+    <button>Search</button>
+  </form><br><br>
+
   <?php foreach($ads as $ad): ?>
     <h3> <?= $ad['title'] ?> </h3>
 
