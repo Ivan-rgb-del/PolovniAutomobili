@@ -63,11 +63,29 @@
       $stmt = $this->conn->prepare("DELETE FROM ads WHERE id = ?");
       $stmt->bind_param("i", $adId);
       $stmt->execute();
+      $stmt->close();
     }
 
     public function editAdvertisement(Advertisement $advertisement)
     {
-      
+      $stmt = $this->conn->prepare(
+        "UPDATE ads
+        SET title=?, price=?, description=?, first_registration=?, fuel_type=?, category_id=?, sub_category=?
+        WHERE id=?"
+      );
+      $stmt->bind_param(
+        "sisisiii",
+        $advertisement->title,
+        $advertisement->price,
+        $advertisement->description,
+        $advertisement->firstRegistration,
+        $advertisement->fuelType,
+        $advertisement->categoryId,
+        $advertisement->subCategory,
+        $advertisement->id
+      );
+      $stmt->execute();
+      $stmt->close();
     }
   }
 

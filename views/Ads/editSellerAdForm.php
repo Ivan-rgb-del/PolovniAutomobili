@@ -1,3 +1,10 @@
+<?php
+
+  $adId = $_GET['advertisementId'];
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,10 +14,12 @@
 </head>
 <body>
 
-  <h1>Edit your advertisement</h1>
+  <h1>Edit your advertisement:</h1>
 
-  <form action="../../processEditSellerAdvertisement.php" method="POST">
-  <label for="title">Title:</label>
+  <form action="../../processEditSellerAdvertisement.php" method="POST" enctype="multipart/form-data">
+  <input type="hidden" name="id" value="<?= $adId ?>">
+
+    <label for="title">Title:</label>
     <input type="text" name="title" id="title" required><br><br>
 
     <label for="price">Price:</label>
@@ -50,7 +59,10 @@
       <option value="7">Cargo</option>
     </select><br><br>
 
-    <button type="submit" name="upload">Edit ad</button>
+    <label for="adImageToUpload">Select image for ad (leave blank to keep current image):</label>
+    <input type="file" name="adImageToUpload" id="adImageToUpload"><br><br>
+
+    <button type="submit" name="update">Update ad</button>
   </form>
 
 </body>

@@ -1,6 +1,7 @@
 <?php
 
   class Advertisement {
+    public $id;
     public $title;
     public $price;
     public $description;

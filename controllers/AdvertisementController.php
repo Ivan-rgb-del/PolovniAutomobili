@@ -48,6 +48,28 @@
     public function deleteAdvertisement($idAd) {
       $this->advertisementRepository->deleteAdvertisement($idAd);
     }
+
+    public function editAdvertisement($id, $title, $price, $description, $firstRegistration, $fuelType, $categoryId, $subCategory, $url = null) {
+      $newAd = new Advertisement();
+
+      $newAd->id = $id;
+      $newAd->title = $title;
+      $newAd->price = $price;
+      $newAd->description = $description;
+      $newAd->firstRegistration = $firstRegistration;
+      $newAd->fuelType = $fuelType;
+      $newAd->categoryId = $categoryId;
+      $newAd->subCategory = $subCategory;
+
+      $this->advertisementRepository->editAdvertisement($newAd);
+
+      if ($url !== null) {
+        $adImage = new AdImage();
+        $adImage->imageUrl = $url;
+        $adImage->advertisementId = $id;
+        $this->adImageRepository->addImageForAd($adImage);
+      }
+    }
   }
 
 ?>
