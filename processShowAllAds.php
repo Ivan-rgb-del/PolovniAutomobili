@@ -31,7 +31,7 @@
     <?php if ($adImageController->getImageOfAd($ad['id'])): ?>
       <img
         src="assets/pictures/AdPictures/<?= $adImageController->getImageOfAd($ad['id']) ?>"
-        alt="Ad picture"
+        alt="<?= $ad['title'] ?>"
         style="width: 250px;"
       >
     <?php else: ?>
@@ -47,7 +47,10 @@
     <p>Fuel type: <?= $ad['fuel_type'] ?> </p>
     <p>Description: <?= $ad['description'] ?> </p>
 
-    <a href="#">More</a><br><br>
+    <a href="processShowAd.php?advertisementId=<?= $ad['id'] ?>">
+      More
+    </a>
+    <br><br>
   <?php endforeach; ?>
 
 </body>

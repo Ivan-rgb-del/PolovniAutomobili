@@ -93,18 +93,23 @@
       $stmt = $this->conn->prepare("SELECT * FROM ads WHERE id=?");
       $stmt->bind_param("i", $adId);
       $stmt->execute();
-      $stmt->close();
+      $result = $stmt->get_result();
+
+      if ($result->num_rows === 0) {
+        return null;
+      }
+
+      return $result->fetch_assoc();
     }
 
     public function getAllAdvertisement() {
       $result = $this->conn->query("SELECT * FROM ads");
 
       if ($result->num_rows == 0) {
-        return "Sorry, at this moment no one ad is available!";
+        return null;
       }
 
-      $ads = $result->fetch_all(MYSQLI_ASSOC);
-      return $ads;
+      return $result->fetch_all(MYSQLI_ASSOC);
     }
   }
 
