@@ -45,7 +45,7 @@
         <img src="assets/pictures/AdPictures/notFound.png" alt="Not found" style="width: 250px;">
       <?php endif; ?>
 
-      <p> Price: <?= $ad['price'] ?> </p>
+      <p> Price: <?= number_format($ad['price']) ?>€ </p>
       <p> Description: <?= $ad['description'] ?> </p>
       <p> First registartion: <?= $ad['first_registration'] ?> </p>
       <p> Fuel type: <?= $ad['fuel_type'] ?> </p>

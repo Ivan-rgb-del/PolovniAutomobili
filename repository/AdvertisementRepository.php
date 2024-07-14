@@ -95,6 +95,17 @@
       $stmt->execute();
       $stmt->close();
     }
+
+    public function getAllAdvertisement() {
+      $result = $this->conn->query("SELECT * FROM ads");
+
+      if ($result->num_rows == 0) {
+        return "Sorry, at this moment no one ad is available!";
+      }
+
+      $ads = $result->fetch_all(MYSQLI_ASSOC);
+      return $ads;
+    }
   }
 
 ?>

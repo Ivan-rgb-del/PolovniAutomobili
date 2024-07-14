@@ -75,6 +75,10 @@
     public function getAdId($adId) {
       return $this->advertisementRepository->getAdvertisementId($adId);
     }
+
+    public function getAllAdvertisement() {
+      return $this->advertisementRepository->getAllAdvertisement();
+    }
   }
 
 ?>

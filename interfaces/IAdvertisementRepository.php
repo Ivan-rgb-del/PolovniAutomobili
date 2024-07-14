@@ -7,6 +7,7 @@
     public function deleteAdvertisement($adId);
     public function editAdvertisement(Advertisement $advertisement);
     public function getAdvertisementId($adId);
+    public function getAllAdvertisement();
   }
 
 ?>
