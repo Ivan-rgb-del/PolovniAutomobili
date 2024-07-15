@@ -56,6 +56,9 @@
     <a href="processShowAd.php?advertisementId=<?= $ad['id'] ?>">
       More
     </a>
+    <a href="processSaveAd.php?advertisementId=<?= $ad['id'] ?>" style="margin-left: 10px;">
+      Save
+    </a>
     <br><br>
   <?php endforeach; ?>
 
