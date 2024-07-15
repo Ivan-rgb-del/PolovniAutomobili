@@ -13,6 +13,10 @@
     public function saveAdvertisement($userId, $adId) {
       return $this->savedAdsRepo->saveAdvertisement($userId, $adId);
     }
+
+    public function showAllSavedAdsByUser($userId) {
+      return $this->savedAdsRepo->showAllSavedAdsByUser($userId);
+    }
   }
 
 ?>
