@@ -1,9 +1,9 @@
 <?php
 
-  require_once "models/Advertisement.php";
-  require_once "repository/AdvertisementRepository.php";
-  require_once "repository/AdImageRepository.php";
-  require_once "models/AdImage.php";
+  require_once "./app/models/Advertisement.php";
+  require_once "./app/repository/AdvertisementRepository.php";
+  require_once "./app/repository/AdImageRepository.php";
+  require_once "./app/models/AdImage.php";
 
   class AdvertisementController {
     private $advertisementRepository;

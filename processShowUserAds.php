@@ -5,10 +5,10 @@
   }
   $userId = $_SESSION['userId'];
 
-  require_once "controllers/UserController.php";
-  require_once "repository/UserRepository.php";
-  require_once "controllers/AdImageController.php";
-  require_once "repository/AdImageRepository.php";
+  require_once "./app/controllers/UserController.php";
+  require_once "./app/repository/UserRepository.php";
+  require_once "./app/controllers/AdImageController.php";
+  require_once "./app/repository/AdImageRepository.php";
 
   $userRepo = new UserRepository();
   $userController = new UserController($userRepo);
@@ -29,6 +29,7 @@
 </head>
 <body>
 
+  <a href="./views/index.php">Home</a>
   <h1>Your advertisements</h1><br>
 
   <?php if ($advertisement === null): ?>

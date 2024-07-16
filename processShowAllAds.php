@@ -1,9 +1,9 @@
 <?php
 
-  require_once "controllers/AdvertisementController.php";
-  require_once "controllers/AdImageController.php";
-  require_once "repository/AdImageRepository.php";
-  require_once "repository/AdvertisementRepository.php";
+  require_once "./app/controllers/AdvertisementController.php";
+  require_once "./app/controllers/AdImageController.php";
+  require_once "./app/repository/AdImageRepository.php";
+  require_once "./app/repository/AdvertisementRepository.php";
 
   $adImageRepo = new AdImageRepository();
   $adRepo = new AdvertisementRepository();

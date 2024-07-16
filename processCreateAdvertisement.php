@@ -1,9 +1,8 @@
 <?php
 
-  require_once __DIR__ . "/repository/AdvertisementRepository.php";
-  require_once __DIR__ . "/repository/AdImageRepository.php";
-  require_once __DIR__ . "/controllers/AdvertisementController.php";
-  require_once __DIR__ . "/interfaces/IAdvertisementRepository.php";
+  require_once "./app/repository/AdvertisementRepository.php";
+  require_once "./app/repository/AdImageRepository.php";
+  require_once "./app/controllers/AdvertisementController.php";
 
   $adsRepo = new AdvertisementRepository();
   $adImageRepo = new AdImageRepository();

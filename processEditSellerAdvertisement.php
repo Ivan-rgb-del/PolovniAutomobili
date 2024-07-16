@@ -1,9 +1,9 @@
 <?php
 
-  require_once "repository/AdvertisementRepository.php";
-  require_once "repository/AdImageRepository.php";
-  require_once "controllers/AdvertisementController.php";
-  require_once "controllers/AdImageController.php";
+  require_once "./app/repository/AdvertisementRepository.php";
+  require_once "./app/repository/AdImageRepository.php";
+  require_once "./app/controllers/AdvertisementController.php";
+  require_once "./app/controllers/AdImageController.php";
 
   $adImageRepo = new AdImageRepository();
   $adRepo = new AdvertisementRepository();
@@ -51,7 +51,7 @@
     echo "Sorry, your file was not uploaded.";
   } else {
     if (move_uploaded_file($_FILES["adImageToUpload"]["tmp_name"], $target_file)) {
-      header("Location: views/index.php");
+      header("Location: processShowUserAds.php");
     } else {
       echo "Sorry, there was an error uploading your file.";
     }
