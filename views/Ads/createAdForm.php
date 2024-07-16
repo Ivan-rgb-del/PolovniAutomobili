@@ -19,7 +19,7 @@
 
   <h1>Post an ad</h1>
 
-  <form action="../../processCreateAdvertisement.php" method="POST" enctype="multipart/form-data">
+  <form action="../../app/handlers/processCreateAdvertisement.php" method="POST" enctype="multipart/form-data">
     <label for="title">Title:</label>
     <input type="text" name="title" id="title" required><br><br>
 

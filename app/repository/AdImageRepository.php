@@ -1,8 +1,8 @@
 <?php
 
-  require_once "./app/database/Base.php";
-  require_once "./app/models/AdImage.php";
-  require_once "./app/interfaces/IAdImageRepository.php";
+  require_once "app/database/Base.php";
+  require_once "app/models/AdImage.php";
+  require_once "app/interfaces/IAdImageRepository.php";
 
   class AdImageRepository extends Base implements IAdImageRepository {
     public function addImageForAd(AdImage $adImage)

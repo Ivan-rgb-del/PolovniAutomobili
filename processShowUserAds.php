@@ -5,10 +5,10 @@
   }
   $userId = $_SESSION['userId'];
 
-  require_once "./app/controllers/UserController.php";
-  require_once "./app/repository/UserRepository.php";
-  require_once "./app/controllers/AdImageController.php";
-  require_once "./app/repository/AdImageRepository.php";
+  require_once "app/controllers/UserController.php";
+  require_once "app/repository/UserRepository.php";
+  require_once "app/controllers/AdImageController.php";
+  require_once "app/repository/AdImageRepository.php";
 
   $userRepo = new UserRepository();
   $userController = new UserController($userRepo);

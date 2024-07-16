@@ -16,7 +16,7 @@
 
   <h1>Edit your advertisement:</h1>
 
-  <form action="../../processEditSellerAdvertisement.php" method="POST" enctype="multipart/form-data">
+  <form action="../../app/handlers/processEditSellerAdvertisement.php" method="POST" enctype="multipart/form-data">
     <input type="hidden" name="id" value="<?= $adId ?>">
 
     <label for="title">Title:</label>

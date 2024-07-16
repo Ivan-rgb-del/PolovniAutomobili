@@ -1,8 +1,8 @@
 <?php
 
-  require_once "./app/database/Base.php";
-  require_once "./app/interfaces/IAdvertisementRepository.php";
-  require_once "./app/models/Advertisement.php";
+  require_once "app/database/Base.php";
+  require_once "app/interfaces/IAdvertisementRepository.php";
+  require_once "app/models/Advertisement.php";
 
   if (session_status() == PHP_SESSION_NONE) {
     session_start();

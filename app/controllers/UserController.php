@@ -1,7 +1,7 @@
 <?php
 
-  require_once "../repository/UserRepository.php";
-  require_once "../database/Base.php";
+  require_once "app/repository/UserRepository.php";
+  require_once "app/database/Base.php";
 
   class UserController {
     private $userRepository;
@@ -25,9 +25,7 @@
       $newUser->profileImage = $profileImage;
       $newUser->phoneNumber = $phoneNumber;
 
-      $this->userRepository->registerUser($newUser);
-
-      return "User added successfully!";
+      return $this->userRepository->registerUser($newUser);
     }
 
     // LOGIN

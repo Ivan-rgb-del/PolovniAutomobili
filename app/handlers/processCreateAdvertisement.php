@@ -1,8 +1,8 @@
 <?php
 
-  require_once "./app/repository/AdvertisementRepository.php";
-  require_once "./app/repository/AdImageRepository.php";
-  require_once "./app/controllers/AdvertisementController.php";
+  require_once "../repository/AdvertisementRepository.php";
+  require_once "../repository/AdImageRepository.php";
+  require_once "../controllers/AdvertisementController.php";
 
   $adsRepo = new AdvertisementRepository();
   $adImageRepo = new AdImageRepository();
@@ -17,7 +17,7 @@
   $userId = $_POST['userId'];
   $subCategoryId = $_POST['vehicleType'];
 
-  $target_dir = "assets/pictures/AdPictures/";
+  $target_dir = "../../assets/pictures/AdPictures/";
   $target_file = $target_dir . basename($_FILES["adImageToUpload"]["name"]);
   $uploadOk = 1;
   $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
@@ -47,7 +47,7 @@
     echo "Sorry, your file was not uploaded.";
   } else {
     if (move_uploaded_file($_FILES["adImageToUpload"]["tmp_name"], $target_file)) {
-      header("Location: views/index.php");
+      header("Location: ../../views/index.php");
     } else {
       echo "Sorry, there was an error uploading your file.";
     }

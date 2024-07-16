@@ -1,7 +1,7 @@
 <?php
 
-  require_once "./app/controllers/SavedAdsController.php";
-  require_once "./app/repository/SavedAdsRepository.php";
+  require_once "../controllers/SavedAdsController.php";
+  require_once "../repository/SavedAdsRepository.php";
 
   $savedAdsRepo = new SavedAdsRepository();
   $savedAdsController = new SavedAdsController($savedAdsRepo);
