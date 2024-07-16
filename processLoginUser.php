@@ -1,8 +1,7 @@
 <?php
 
-  require_once __DIR__ . "/controllers/UserController.php";
-  require_once __DIR__ . "/interfaces/IUserRepository.php";
-  require_once __DIR__ . "/repository/UserRepository.php";
+  require_once "./app/controllers/UserController.php";
+  require_once "./app/repository/UserRepository.php";
 
   if (session_status() == PHP_SESSION_NONE) {
     session_start();

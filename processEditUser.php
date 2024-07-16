@@ -1,7 +1,7 @@
 <?php
 
-  require_once "repository/UserRepository.php";
-  require_once "controllers/UserController.php";
+  require_once "./app/repository/UserRepository.php";
+  require_once "./app/controllers/UserController.php";
 
   $userRepo = new UserRepository();
   $userController = new UserController($userRepo);
