@@ -7,6 +7,11 @@
 
   require_once "controllers/SavedAdsController.php";
   require_once "repository/SavedAdsRepository.php";
+  require_once "repository/AdImageRepository.php";
+  require_once "controllers/AdImageController.php";
+
+  $adImageRepo = new AdImageRepository();
+  $adImageController = new AdImageController($adImageRepo);
 
   $savedAdRepo = new SavedAdsRepository();
   $saveAdController = new SavedAdsController($savedAdRepo);
@@ -26,6 +31,21 @@
 
   <?php foreach ($savedAds as $ad): ?>
     <h3>Model: <?= $ad['title'] ?></h3>
+
+    <?php if($adImageController->getImageOfAd($ad['id'])): ?>
+      <img
+        src="assets/pictures/AdPictures/<?= $adImageController->getImageOfAd($ad['id']) ?>"
+        alt="<?= $ad['title'] ?>"
+        style="width: 250px"
+      >
+    <?php else: ?>
+      <img
+        src="assets/pictures/AdPictures/notFound.png"
+        alt="<?= $ad['title'] ?>"
+        style="width: 250px;"
+      >
+    <?php endif; ?>
+
     <p> First registartion: <?= $ad['first_registration'] ?> </p>
     <p> Price: <?= number_format($ad['price']) ?>€ </p>
     <p> Fuel type: <?= $ad['fuel_type'] ?> </p>

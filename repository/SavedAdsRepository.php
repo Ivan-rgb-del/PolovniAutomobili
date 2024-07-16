@@ -17,6 +17,7 @@
     public function getAllSavedAdsByUser($userId) {
       $stmt = $this->conn->prepare(
         "SELECT 
+          ads.id,
           ads.title,
           ads.price,
           ads.description,
