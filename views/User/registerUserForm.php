@@ -8,7 +8,7 @@
 <body>
 
   <h1>Register User</h1>
-  <form action="../../processRegisterUser.php" method="POST" enctype="multipart/form-data">
+  <form action="../../app/handlers/processRegisterUser.php" method="POST" enctype="multipart/form-data">
     <label for="firstName">First Name:</label>
     <input type="text" name="firstName" id="firstName" required><br><br>
 

@@ -1,7 +1,7 @@
 <?php
 
-  require_once "./app/controllers/UserController.php";
-  require_once "./app/repository/UserRepository.php";
+  require_once "../controllers/UserController.php";
+  require_once "../repository/UserRepository.php";
 
   if (session_status() == PHP_SESSION_NONE) {
     session_start();
@@ -23,6 +23,6 @@
   $_SESSION['userId'] = $user['id'];
   $_SESSION['userRole'] = $user['role'];
 
-  header("Location: views/index.php");
+  header("Location: ../../views/index.php");
 
 ?>

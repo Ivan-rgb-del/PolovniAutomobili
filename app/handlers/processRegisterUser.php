@@ -1,7 +1,7 @@
 <?php
 
-  require_once "./app/controllers/UserController.php";
-  require_once "./app/repository/UserRepository.php";
+  require_once "../controllers/UserController.php";
+  require_once "../repository/UserRepository.php";
 
   $userRepo = new UserRepository();
   $userController = new UserController($userRepo);
@@ -53,6 +53,6 @@
 
   $result = $userController->registerUser($firstName, $lastName, $email, $password, $role, $profileImage, $phoneNumber);
 
-  header("Location: views/index.php");
+  header("Location: ../../views/User/loginUserForm.php");
 
 ?>

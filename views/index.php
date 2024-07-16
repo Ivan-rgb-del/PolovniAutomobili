@@ -19,11 +19,11 @@
 
   <ul>
     <?php if (isset($_SESSION['logged']) && $_SESSION['userRole'] == "seller"): ?>
-      <a href="../processLogoutUser.php">Logout</a><br>
+      <a href="../app/handlers/processLogoutUser.php">Logout</a><br>
       <a href="./Ads/createAdForm.php">Add new car</a><br>
       <a href="../processShowUserAds.php">My advertisement</a>
     <?php elseif (isset($_SESSION['logged']) && $_SESSION['userRole'] == "user"): ?>
-      <a href="../processLogoutUser.php">Logout</a><br>
+      <a href="/views/index.php">Logout</a><br>
       <a href="../processShowAllAds.php">Look for new car</a><br>
       <a href="../processShowUserSavedAds.php">Saved ads</a>
     <?php else: ?>

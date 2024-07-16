@@ -9,7 +9,7 @@
 
   <h1>Reset password</h1>
 
-  <form action="../../processEditUser.php" method="POST">
+  <form action="../../app/handlers/processEditUser.php" method="POST">
     <label for="email">Enter Your Email</label>
     <input type="email" name="email" id="email" required><br><br>
 
