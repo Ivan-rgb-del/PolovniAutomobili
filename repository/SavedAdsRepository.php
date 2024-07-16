@@ -3,6 +3,7 @@
   require_once "database/Base.php";
   require_once "models/SavedAds.php";
   require_once "interfaces/ISavedAdsRepository.php";
+  require_once "models/Advertisement.php";
 
   class SavedAdsRepository extends Base implements ISavedAdsRepository {
     public function saveAdvertisement($userId, $adId)
@@ -13,18 +14,18 @@
       $stmt->close();
     }
 
-    public function showAllSavedAdsByUser($userId) {
-      $stmt = $this->conn->prepare("SELECT * FROM saved_ads WHERE user_id = ?");
+    public function getAllSavedAdsByUser($userId) {
+      $stmt = $this->conn->prepare(
+        "SELECT a.* FROM ads a
+        JOIN saved_ads s
+        ON a.id = s.advertisement_id
+        WHERE s.user_id = ?"
+      );
       $stmt->bind_param("i", $userId);
       $stmt->execute();
       $result = $stmt->get_result();
-
-      if ($result->num_rows === 0) {
-        return "You do not have any saved ad!";
-      }
-
-      var_dump($result->fetch_all(MYSQLI_ASSOC));
-      return $result->fetch_all(MYSQLI_ASSOC);
+      $rows = $result->fetch_all(MYSQLI_ASSOC);
+      var_dump($rows);
     }
   }
 

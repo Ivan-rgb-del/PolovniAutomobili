@@ -11,7 +11,11 @@
   $savedAdRepo = new SavedAdsRepository();
   $saveAdController = new SavedAdsController($savedAdRepo);
 
-  $savedAds = $saveAdController->showAllSavedAdsByUser($userId);
+  try {
+    $savedAds = $saveAdController->getAllSavedAdsByUser($userId);
+  } catch (Exception $e) {
+    die("Error fetching saved ads: " . $e->getMessage());
+  }
 
 ?>
 
@@ -24,7 +28,9 @@
 </head>
 <body>
 
-
+  <?php foreach($savedAds as $ad): ?>
+    <h3> Model: <?= $ad['title'] ?> </h3>
+  <?php endforeach; ?>
 
 </body>
 </html>

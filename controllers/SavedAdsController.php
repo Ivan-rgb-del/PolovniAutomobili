@@ -14,8 +14,8 @@
       return $this->savedAdsRepo->saveAdvertisement($userId, $adId);
     }
 
-    public function showAllSavedAdsByUser($userId) {
-      return $this->savedAdsRepo->showAllSavedAdsByUser($userId);
+    public function getAllSavedAdsByUser($userId) {
+      return $this->savedAdsRepo->getAllSavedAdsByUser($userId);
     }
   }
 
