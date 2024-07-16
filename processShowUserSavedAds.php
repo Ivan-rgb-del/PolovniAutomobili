@@ -26,10 +26,17 @@
 
   <?php foreach ($savedAds as $ad): ?>
     <h3>Model: <?= $ad['title'] ?></h3>
-    <p> Price: <?= number_format($ad['price']) ?>€ </p>
-    <p> Description: <?= $ad['description'] ?> </p>
     <p> First registartion: <?= $ad['first_registration'] ?> </p>
+    <p> Price: <?= number_format($ad['price']) ?>€ </p>
     <p> Fuel type: <?= $ad['fuel_type'] ?> </p>
+
+    <?php if ($ad['category_id'] == 1): ?>
+      <p>Type: Car</p>
+    <?php else: ?>
+      <p>Type: Van</p>
+    <?php endif; ?>
+
+    <p> Description: <?= $ad['description'] ?> </p><br>
   <?php endforeach; ?>
 
 </body>
