@@ -24,11 +24,13 @@
 </head>
 <body>
 
-  <h3> Model: <?= $savedAds['title'] ?> </h3>
-  <p> Price: <?= number_format($savedAds['price']) ?>€ </p>
-  <p> Description: <?= $savedAds['description'] ?> </p>
-  <p> First registartion: <?= $savedAds['first_registration'] ?> </p>
-  <p> Fuel type: <?= $savedAds['fuel_type'] ?> </p>
+  <?php foreach ($savedAds as $ad): ?>
+    <h3>Model: <?= $ad['title'] ?></h3>
+    <p> Price: <?= number_format($ad['price']) ?>€ </p>
+    <p> Description: <?= $ad['description'] ?> </p>
+    <p> First registartion: <?= $ad['first_registration'] ?> </p>
+    <p> Fuel type: <?= $ad['fuel_type'] ?> </p>
+  <?php endforeach; ?>
 
 </body>
 </html>

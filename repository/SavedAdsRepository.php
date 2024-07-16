@@ -16,16 +16,29 @@
 
     public function getAllSavedAdsByUser($userId) {
       $stmt = $this->conn->prepare(
-        "SELECT a.* FROM ads a
-        JOIN saved_ads s
-        ON a.id = s.advertisement_id
-        WHERE s.user_id = ?"
+        "SELECT 
+          ads.title,
+          ads.price,
+          ads.description,
+          ads.first_registration,
+          ads.fuel_type,
+          ads.category_id,
+          ads.user_id,
+          ads.sub_category
+        FROM 
+          saved_ads
+        JOIN 
+          ads ON saved_ads.advertisement_id = ads.id
+        JOIN 
+          users ON ads.user_id = users.id
+        WHERE 
+          saved_ads.user_id = ?"
       );
       $stmt->bind_param("i", $userId);
       $stmt->execute();
       $result = $stmt->get_result();
 
-      return $result->fetch_assoc();
+      return $result->fetch_all(MYSQLI_ASSOC);
     }
   }
 
