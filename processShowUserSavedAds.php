@@ -11,11 +11,7 @@
   $savedAdRepo = new SavedAdsRepository();
   $saveAdController = new SavedAdsController($savedAdRepo);
 
-  try {
-    $savedAds = $saveAdController->getAllSavedAdsByUser($userId);
-  } catch (Exception $e) {
-    die("Error fetching saved ads: " . $e->getMessage());
-  }
+  $savedAds = $saveAdController->getAllSavedAdsByUser($userId);
 
 ?>
 
@@ -28,9 +24,11 @@
 </head>
 <body>
 
-  <?php foreach($savedAds as $ad): ?>
-    <h3> Model: <?= $ad['title'] ?> </h3>
-  <?php endforeach; ?>
+  <h3> Model: <?= $savedAds['title'] ?> </h3>
+  <p> Price: <?= number_format($savedAds['price']) ?>€ </p>
+  <p> Description: <?= $savedAds['description'] ?> </p>
+  <p> First registartion: <?= $savedAds['first_registration'] ?> </p>
+  <p> Fuel type: <?= $savedAds['fuel_type'] ?> </p>
 
 </body>
 </html>
