@@ -1,6 +1,6 @@
 <?php
 
-  require_once "../repository/SavedAdsRepository.php";
+  require_once __DIR__ . '/../repository/SavedAdsRepository.php';
 
   class SavedAdsController {
     private $savedAdsRepo;

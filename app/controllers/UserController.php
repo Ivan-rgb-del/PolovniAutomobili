@@ -1,7 +1,7 @@
 <?php
 
-  require_once "app/repository/UserRepository.php";
-  require_once "app/database/Base.php";
+  require_once __DIR__ . '/../repository/UserRepository.php';
+  require_once __DIR__ . '/../database/Base.php';
 
   class UserController {
     private $userRepository;

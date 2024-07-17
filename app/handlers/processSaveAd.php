@@ -15,6 +15,6 @@
 
   $savedAdsController->saveAdvertisement($userId, $adId);
 
-  header("Location: views/index.php");
+  header("Location: ../../processShowUserSavedAds.php");
 
 ?>

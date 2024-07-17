@@ -1,8 +1,8 @@
 <?php
 
-  require_once "app/database/Base.php";
-  require_once "app/interfaces/IUserRepository.php";
-  require_once "app/models/User.php";
+  require_once __DIR__ . "/../database/Base.php";
+  require_once __DIR__ . "/../interfaces/IUserRepository.php";
+  require_once __DIR__ . "/../models/User.php";
 
   class UserRepository extends Base implements IUserRepository {
     // register new user

@@ -1,9 +1,9 @@
 <?php
 
-  require_once "../database/Base.php";
-  require_once "../models/SavedAds.php";
-  require_once "../interfaces/ISavedAdsRepository.php";
-  require_once "../models/Advertisement.php";
+  require_once __DIR__ . '/../models/SavedAds.php';
+  require_once __DIR__ . '/../models/Advertisement.php';
+  require_once __DIR__ . '/../database/Base.php';
+  require_once __DIR__ . '/../interfaces/ISavedAdsRepository.php';
 
   class SavedAdsRepository extends Base implements ISavedAdsRepository {
     public function saveAdvertisement($userId, $adId)

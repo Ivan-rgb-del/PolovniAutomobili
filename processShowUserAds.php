@@ -57,7 +57,7 @@
         <p> Type: Van</p>
       <?php endif; ?>
 
-      <a href="processDeleteAdvertisement.php?advertisementId=<?= $ad['id'] ?>">Delete</a><br>
+      <a href="./app/handlers/processDeleteAdvertisement.php?advertisementId=<?= $ad['id'] ?>">Delete</a><br>
       <a href="views/Ads/editSellerAdForm.php?advertisementId=<?= $ad['id'] ?>">Edit</a><br><br>
     <?php endforeach; ?>
   <?php endif; ?>

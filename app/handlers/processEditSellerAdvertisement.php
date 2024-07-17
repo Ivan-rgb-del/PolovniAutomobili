@@ -21,7 +21,7 @@
 
   $url = null;
 
-  $target_dir = "assets/pictures/AdPictures/";
+  $target_dir = "../../assets/pictures/AdPictures/";
   $target_file = $target_dir . basename($_FILES["adImageToUpload"]["name"]);
   $uploadOk = 1;
   $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
@@ -51,7 +51,7 @@
     echo "Sorry, your file was not uploaded.";
   } else {
     if (move_uploaded_file($_FILES["adImageToUpload"]["tmp_name"], $target_file)) {
-      header("Location: processShowUserAds.php");
+      header("Location: ../../views/index.php");
     } else {
       echo "Sorry, there was an error uploading your file.";
     }

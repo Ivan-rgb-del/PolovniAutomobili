@@ -16,6 +16,6 @@
   $adImageController->deleteAdvertisementImage($advertisementId);
   $adsController->deleteAdvertisement($advertisementId);
 
-  header("Location: processShowUserAds.php");
+  header("Location: ../../processShowUserAds.php");
 
 ?>
