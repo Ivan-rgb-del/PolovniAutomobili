@@ -2,10 +2,10 @@
 
   $advertisementId = $_GET['advertisementId'];
 
-  require_once "../repository/AdvertisementRepository.php";
-  require_once "../repository/AdImageRepository.php";
-  require_once "../controllers/AdvertisementController.php";
-  require_once "../controllers/AdImageController.php";
+  require_once __DIR__ . '/../repository/AdvertisementRepository.php';
+  require_once __DIR__ . '/../repository/AdImageRepository.php';
+  require_once __DIR__ . '/../controllers/AdvertisementController.php';
+  require_once __DIR__ . '/../controllers/AdImageController.php';
 
   $adsRepo = new AdvertisementRepository();
   $adImageRepo = new AdImageRepository();
