@@ -11,15 +11,15 @@
       $this->savedAdsContract = $savedAdsRepo;
     }
 
-    public function saveAdvertisement($userId, $adId) {
+    public function saveAdvertisement(int $userId, int $adId) {
       return $this->savedAdsContract->saveAdvertisement($userId, $adId);
     }
 
-    public function getAllSavedAdsByUser($userId) {
+    public function getAllSavedAdsByUser(int $userId) {
       return $this->savedAdsContract->getAllSavedAdsByUser($userId);
     }
 
-    public function deleteSavedAd($adId) {
+    public function deleteSavedAd(int $adId) {
       $userIds = $this->savedAdsContract->getUserWhoSavedAd($adId);
       foreach ($userIds as $userId) {
         $this->savedAdsContract->deleteSavedAd($userId, $adId);

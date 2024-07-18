@@ -6,7 +6,7 @@
   require_once __DIR__ . '/../contracts/SavedAdsContract.php';
 
   class SavedAdsRepository extends Base implements SavedAdsContract {
-    public function saveAdvertisement($userId, $adId)
+    public function saveAdvertisement(int $userId, int $adId)
     {
       $stmt = $this->conn->prepare("INSERT INTO saved_ads (user_id, advertisement_id) VALUES (?, ?)");
       $stmt->bind_param("ii", $userId, $adId);
@@ -14,7 +14,7 @@
       $stmt->close();
     }
 
-    public function getAllSavedAdsByUser($userId) {
+    public function getAllSavedAdsByUser(int $userId) {
       $stmt = $this->conn->prepare(
         "SELECT 
           ads.id,
@@ -42,7 +42,7 @@
       return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function deleteSavedAd($userId, $adId) {
+    public function deleteSavedAd(int $userId, int $adId) {
       $stmt = $this->conn->prepare(
         "DELETE FROM saved_ads
         WHERE user_id = ?
@@ -52,7 +52,7 @@
       $stmt->execute();
     }
 
-    public function getUserWhoSavedAd($adId) {
+    public function getUserWhoSavedAd(int $adId) {
       $result = $this->conn->query("SELECT user_id FROM saved_ads WHERE advertisement_id = '$adId'");
       $userIds = [];
       if ($result) {

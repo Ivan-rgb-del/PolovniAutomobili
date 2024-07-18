@@ -2,10 +2,10 @@
 
   interface UserContract {
     public function registerUser(User $user);
-    public function emailExist($email);
-    public function loginUser($email, $password);
-    public function editUser($email, $password);
-    public function getUserAds($userId);
+    public function emailExist(string $email);
+    public function loginUser(string $email, string $password);
+    public function editUser(string $email, string $password);
+    public function getUserAds(int $userId);
   }
 
 ?>

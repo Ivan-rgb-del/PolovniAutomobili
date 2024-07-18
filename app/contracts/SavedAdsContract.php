@@ -1,10 +1,10 @@
 <?php
 
   interface SavedAdsContract {
-    public function saveAdvertisement($userId, $adId);
-    public function getAllSavedAdsByUser($userId);
-    public function deleteSavedAd($userId, $adId);
-    public function getUserWhoSavedAd($adId);
+    public function saveAdvertisement(int $userId, int $adId);
+    public function getAllSavedAdsByUser(int $userId);
+    public function deleteSavedAd(int $userId, int $adId);
+    public function getUserWhoSavedAd(int $adId);
   }
 
 ?>

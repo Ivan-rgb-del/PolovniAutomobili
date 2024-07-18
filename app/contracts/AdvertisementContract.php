@@ -2,13 +2,13 @@
 
   interface AdvertisementContract {
     public function createAdvertisement(Advertisement $advertisement);
-    public function countOfCreatedAdsByUser($userId);
+    public function countOfCreatedAdsByUser(int $userId);
     public function getLastInsertId();
-    public function deleteAdvertisement($adId);
+    public function deleteAdvertisement(int $adId);
     public function editAdvertisement(Advertisement $advertisement);
-    public function getAdvertisementId($adId);
+    public function getAdvertisementId(int $adId);
     public function getAllAdvertisement();
-    public function filterAdsByTitle($input);
+    public function filterAdsByTitle(string $input);
   }
 
 ?>

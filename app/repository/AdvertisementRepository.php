@@ -41,7 +41,7 @@
       return $this->conn->insert_id;
     }
 
-    public function countOfCreatedAdsByUser($userId)
+    public function countOfCreatedAdsByUser(int $userId)
     {
       $result = $this->conn->query(
         "SELECT COUNT(*)
@@ -55,7 +55,7 @@
       return $count;
     }
 
-    public function deleteAdvertisement($adId)
+    public function deleteAdvertisement(int $adId)
     {
       $stmt = $this->conn->prepare("DELETE FROM ads WHERE id = ?");
       $stmt->bind_param("i", $adId);
@@ -85,7 +85,7 @@
       $stmt->close();
     }
 
-    public function getAdvertisementId($adId)
+    public function getAdvertisementId(int $adId)
     {
       $stmt = $this->conn->prepare("SELECT * FROM ads WHERE id=?");
       $stmt->bind_param("i", $adId);
@@ -109,7 +109,7 @@
       return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function filterAdsByTitle($input)
+    public function filterAdsByTitle(string $input)
     {
       $input = '%' . $input . '%';
       $stmt = $this->conn->prepare("SELECT * FROM ads WHERE title LIKE ?");

@@ -1,8 +1,8 @@
 <?php
 
   class AdImage {
-    public $imageUrl;
-    public $advertisementId;
+    public string $imageUrl;
+    public int $advertisementId;
   }
 
 ?>

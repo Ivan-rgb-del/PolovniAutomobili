@@ -33,7 +33,7 @@
       $stmt->close();
     }
 
-    public function emailExist($email)
+    public function emailExist(string $email)
     {
       $stmt = $this->conn->prepare("SELECT * FROM users WHERE email = ?");
       $stmt->bind_param("s", $email);
@@ -42,7 +42,7 @@
       return $user;
     }
 
-    public function loginUser($email, $password)
+    public function loginUser(string $email, string $password)
     {
       $email = $this->conn->real_escape_string($email);
       $password = $this->conn->real_escape_string($password);
@@ -62,7 +62,7 @@
       return null;
     }
 
-    public function editUser($email, $password)
+    public function editUser(string $email, string $password)
     {
       $email = $this->conn->real_escape_string($email);
       $password = $this->conn->real_escape_string($password);
@@ -84,7 +84,7 @@
       return null;
     }
 
-    public function getUserAds($userId)
+    public function getUserAds(int $userId)
     {
       $stmt = $this->conn->prepare("SELECT * FROM ads WHERE user_id = ?");
       $stmt->bind_param("i", $userId);

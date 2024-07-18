@@ -20,7 +20,7 @@
 
     // CREATE AD
     public function createAdvertisement(
-      string $title, string $price, string $description,
+      string $title, $price, string $description,
       string $firstRegistration, string $fuelType, int $categoryId,
       int $userId, int $subCategory, string $url
     ) {
@@ -45,11 +45,15 @@
       $this->adImageContract->addImageForAd($adImage);
     }
 
-    public function deleteAdvertisement($idAd) {
+    public function deleteAdvertisement(int $idAd) {
       $this->advertisementContract->deleteAdvertisement($idAd);
     }
 
-    public function editAdvertisement($id, $title, $price, $description, $firstRegistration, $fuelType, $categoryId, $subCategory, $url = null) {
+    public function editAdvertisement(
+      int $id, string $title, $price, string $description,
+      int $firstRegistration, string $fuelType, int $categoryId,
+      int $subCategory, $url = null
+    ) {
       $newAd = new Advertisement();
       $adImage = new AdImage();
 
@@ -72,7 +76,7 @@
       }
     }
 
-    public function getAdId($adId) {
+    public function getAdId(int $adId) {
       return $this->advertisementContract->getAdvertisementId($adId);
     }
 
@@ -80,7 +84,7 @@
       return $this->advertisementContract->getAllAdvertisement();
     }
 
-    public function filterAdsByTitle($input) {
+    public function filterAdsByTitle(string $input) {
       return $this->advertisementContract->filterAdsByTitle($input);
     }
   }

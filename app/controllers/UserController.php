@@ -13,7 +13,9 @@
 
     // REGISTER
     public function registerUser(
-      string $firstName, string $lastName, string $email, string $password, string $role, string $profileImage, int $phoneNumber
+      string $firstName, string $lastName, string $email,
+      string $password, string $role, string $profileImage,
+      int $phoneNumber
     ) {
       $newUser = new User();
 
@@ -38,7 +40,7 @@
       return $this->userContract->editUser($email, $password);
     }
 
-    public function getUserAds($userId) {
+    public function getUserAds(int $userId) {
       return $this->userContract->getUserAds($userId);
     }
   }

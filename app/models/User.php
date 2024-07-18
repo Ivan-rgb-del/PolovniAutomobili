@@ -1,13 +1,13 @@
 <?php
 
   class User {
-    public $firstName;
-    public $lastName;
-    public $email;
-    public $password;
-    public $role;
-    public $profileImage;
-    public $phoneNumber;
+    public string $firstName;
+    public string $lastName;
+    public string $email;
+    public string $password;
+    public string $role;
+    public string $profileImage;
+    public int $phoneNumber;
   }
 
 ?>

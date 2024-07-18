@@ -1,15 +1,15 @@
 <?php
 
   class Advertisement {
-    public $id;
-    public $title;
+    public int $id;
+    public string $title;
     public $price;
-    public $description;
-    public $firstRegistration;
-    public $fuelType;
-    public $categoryId;
-    public $userId;
-    public $subCategory;
+    public string $description;
+    public int $firstRegistration;
+    public string $fuelType;
+    public int $categoryId;
+    public int $userId;
+    public int $subCategory;
   }
 
 ?>

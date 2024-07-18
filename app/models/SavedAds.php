@@ -1,8 +1,8 @@
 <?php
 
   class SavedAds {
-    public $userId;
-    public $adId;
+    public int $userId;
+    public int $adId;
   }
 
 ?>

@@ -12,15 +12,15 @@
       $this->adImageRepository = $adImageRepository;
     }
 
-    public function getImageOfAd($adId) {
+    public function getImageOfAd(int $adId) {
       return $this->adImageRepository->getImageOfAd($adId);
     }
 
-    public function deleteAdvertisementImage($adId) {
+    public function deleteAdvertisementImage(int $adId) {
       return $this->adImageRepository->deleteAdvertisementImage($adId);
     }
 
-    public function editAdImage($url, $adId) {
+    public function editAdImage(string $url, int $adId) {
       $newAdImage = new AdImage();
 
       $newAdImage->imageUrl = $url;

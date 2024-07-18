@@ -13,7 +13,7 @@
       $stmt->close();
     }
 
-    public function getImageOfAd($adId)
+    public function getImageOfAd(int $adId)
     {
       $stmt = $this->conn->prepare("SELECT URL from ad_images where ads_id = ?");
       $stmt->bind_param("i", $adId);
@@ -28,7 +28,7 @@
       return $imageUrl["URL"];
     }
 
-    public function deleteAdvertisementImage($adId)
+    public function deleteAdvertisementImage(int $adId)
     {
       $stmt = $this->conn->prepare("DELETE FROM ad_images WHERE ads_id = ?");
       $stmt->bind_param("i", $adId);
