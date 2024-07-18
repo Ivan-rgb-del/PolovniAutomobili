@@ -17,6 +17,10 @@
     public function getAllSavedAdsByUser($userId) {
       return $this->savedAdsRepo->getAllSavedAdsByUser($userId);
     }
+
+    public function deleteSavedAd($userId, $adId) {
+      return $this->savedAdsRepo->deleteSavedAd($userId, $adId);
+    }
   }
 
 ?>

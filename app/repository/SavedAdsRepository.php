@@ -41,6 +41,16 @@
 
       return $result->fetch_all(MYSQLI_ASSOC);
     }
+
+    public function deleteSavedAd($userId, $adId) {
+      $stmt = $this->conn->prepare(
+        "DELETE FROM saved_ads
+        WHERE user_id = ?
+        AND advertisement_id = ?"
+      );
+      $stmt->bind_param("ii", $userId, $adId);
+      $stmt->execute();
+    }
   }
 
 ?>

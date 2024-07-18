@@ -29,6 +29,15 @@
 </head>
 <body>
 
+  <a href="./views/index.php">Home</a>
+
+  <?php if (!$savedAds): ?>
+    <h1>You do not have any saved ad.</h1>
+    <h1>
+      Please visit <a href="processShowAllAds.php">Ads</a> and save your favourite ads!
+    </h1>
+  <?php endif; ?>
+
   <?php foreach ($savedAds as $ad): ?>
     <h3>Model: <?= $ad['title'] ?></h3>
 
@@ -56,7 +65,11 @@
       <p>Type: Van</p>
     <?php endif; ?>
 
-    <p> Description: <?= $ad['description'] ?> </p><br>
+    <p> Description: <?= $ad['description'] ?> </p>
+    <a
+      href="./app/handlers/processDeleteFromSavedAds.php?adId=<?= $ad['id'] ?>"
+    >Remove
+    </a><br>
   <?php endforeach; ?>
 
 </body>
