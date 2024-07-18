@@ -1,7 +1,7 @@
 <?php
 
   require_once __DIR__ . '/../database/Base.php';
-  require_once __DIR__ . '/../interfaces/AdvertisementContract.php';
+  require_once __DIR__ . '/../contracts/AdvertisementContract.php';
   require_once __DIR__ . '/../models/Advertisement.php';
 
   if (session_status() == PHP_SESSION_NONE) {

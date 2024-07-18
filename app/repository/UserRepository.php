@@ -1,7 +1,7 @@
 <?php
 
   require_once __DIR__ . "/../database/Base.php";
-  require_once __DIR__ . "/../interfaces/UserContract.php";
+  require_once __DIR__ . "/../contracts/UserContract.php";
   require_once __DIR__ . "/../models/User.php";
 
   class UserRepository extends Base implements UserContract {

@@ -3,7 +3,7 @@
   require_once __DIR__ . '/../models/SavedAds.php';
   require_once __DIR__ . '/../models/Advertisement.php';
   require_once __DIR__ . '/../database/Base.php';
-  require_once __DIR__ . '/../interfaces/SavedAdsContract.php';
+  require_once __DIR__ . '/../contracts/SavedAdsContract.php';
 
   class SavedAdsRepository extends Base implements SavedAdsContract {
     public function saveAdvertisement($userId, $adId)
