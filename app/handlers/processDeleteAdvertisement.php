@@ -1,10 +1,5 @@
 <?php
 
-  // if (session_status() === PHP_SESSION_NONE) {
-  //   session_start();
-  // }
-
-  // $userId = $_SESSION['userId'];
   $advertisementId = $_GET['advertisementId'];
 
   require_once __DIR__ . '/../repository/AdvertisementRepository.php';
@@ -23,7 +18,7 @@
   $adImageController = new AdImageController($adImageRepo);
   $savedAdController = new SavedAdsController($savedAdRepo);
 
-  $savedAdController->deleteSavedAd($advertisementId); // moram uzeti id user-a koji je sacuvao taj oglas
+  $savedAdController->deleteSavedAd($advertisementId);
   $adImageController->deleteAdvertisementImage($advertisementId);
   $adsController->deleteAdvertisement($advertisementId);
 
