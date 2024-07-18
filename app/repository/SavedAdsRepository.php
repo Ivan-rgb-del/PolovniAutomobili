@@ -51,6 +51,17 @@
       $stmt->bind_param("ii", $userId, $adId);
       $stmt->execute();
     }
+
+    public function getUserWhoSavedAd($adId) {
+      $result = $this->conn->query("SELECT user_id FROM saved_ads WHERE advertisement_id = '$adId'");
+      $userIds = [];
+      if ($result) {
+        while ($row = $result->fetch_assoc()) {
+          $userIds[] = $row['user_id'];
+        }
+      }
+      return $userIds;
+    }
   }
 
 ?>

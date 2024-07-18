@@ -18,8 +18,11 @@
       return $this->savedAdsRepo->getAllSavedAdsByUser($userId);
     }
 
-    public function deleteSavedAd($userId, $adId) {
-      return $this->savedAdsRepo->deleteSavedAd($userId, $adId);
+    public function deleteSavedAd($adId) {
+      $userIds = $this->savedAdsRepo->getUserWhoSavedAd($adId);
+      foreach ($userIds as $userId) {
+        $this->savedAdsRepo->deleteSavedAd($userId, $adId);
+      }
     }
   }
 
