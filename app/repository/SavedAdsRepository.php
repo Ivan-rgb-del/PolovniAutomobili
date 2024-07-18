@@ -3,9 +3,9 @@
   require_once __DIR__ . '/../models/SavedAds.php';
   require_once __DIR__ . '/../models/Advertisement.php';
   require_once __DIR__ . '/../database/Base.php';
-  require_once __DIR__ . '/../interfaces/ISavedAdsRepository.php';
+  require_once __DIR__ . '/../interfaces/SavedAdsContract.php';
 
-  class SavedAdsRepository extends Base implements ISavedAdsRepository {
+  class SavedAdsRepository extends Base implements SavedAdsContract {
     public function saveAdvertisement($userId, $adId)
     {
       $stmt = $this->conn->prepare("INSERT INTO saved_ads (user_id, advertisement_id) VALUES (?, ?)");

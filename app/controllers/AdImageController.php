@@ -5,9 +5,9 @@
   require_once __DIR__ . '/../repository/AdvertisementRepository.php';
 
   class AdImageController {
-    private $adImageRepository;
+    private readonly AdImageContract $adImageRepository;
 
-    public function __construct(IAdImageRepository $adImageRepository)
+    public function __construct(AdImageRepository $adImageRepository)
     {
       $this->adImageRepository = $adImageRepository;
     }

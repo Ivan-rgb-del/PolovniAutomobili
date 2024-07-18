@@ -1,6 +1,6 @@
 <?php
 
-  interface ISavedAdsRepository {
+  interface SavedAdsContract {
     public function saveAdvertisement($userId, $adId);
     public function getAllSavedAdsByUser($userId);
     public function deleteSavedAd($userId, $adId);

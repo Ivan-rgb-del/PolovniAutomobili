@@ -15,4 +15,6 @@
 
   $result = $savedAdController->deleteSavedAd($userId, $adId);
 
+  header("Location: ../../views/index.php");
+
 ?>

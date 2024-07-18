@@ -1,6 +1,6 @@
 <?php
 
-  interface IUserRepository {
+  interface UserContract {
     public function registerUser(User $user);
     public function emailExist($email);
     public function loginUser($email, $password);

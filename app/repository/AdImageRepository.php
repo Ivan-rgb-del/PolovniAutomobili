@@ -2,9 +2,9 @@
 
   require_once __DIR__ . '/../database/Base.php';
   require_once __DIR__ . '/../models/AdImage.php';
-  require_once __DIR__ . '/../interfaces/IAdImageRepository.php';
+  require_once __DIR__ . '/../interfaces/AdImageContract.php';
 
-  class AdImageRepository extends Base implements IAdImageRepository {
+  class AdImageRepository extends Base implements AdImageContract {
     public function addImageForAd(AdImage $adImage)
     {
       $stmt = $this->conn->prepare("INSERT INTO ad_images (URL, ads_id) VALUES (?, ?)");

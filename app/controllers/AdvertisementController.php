@@ -6,16 +6,16 @@
   require_once __DIR__ . '/../repository/AdImageRepository.php';
 
   class AdvertisementController {
-    private $advertisementRepository;
-    private $adImageRepository;
+    private readonly AdvertisementContract $advertisementContract;
+    private readonly AdImageContract $adImageContract;
 
     public function __construct(
-      IAdvertisementRepository $advertisementRepository,
-      IAdImageRepository $adImageRepository
+      AdvertisementRepository $advertisementRepository,
+      AdImageRepository $adImageRepository
     )
     {
-      $this->advertisementRepository = $advertisementRepository;
-      $this->adImageRepository = $adImageRepository;
+      $this->advertisementContract = $advertisementRepository;
+      $this->adImageContract = $adImageRepository;
     }
 
     // CREATE AD
@@ -35,18 +35,18 @@
       $newAdvertisement->userId = $userId;
       $newAdvertisement->subCategory = $subCategory;
 
-      $this->advertisementRepository->createAdvertisement($newAdvertisement);
+      $this->advertisementContract->createAdvertisement($newAdvertisement);
 
-      $lastAdvertisementId = $this->advertisementRepository->getLastInsertId();
+      $lastAdvertisementId = $this->advertisementContract->getLastInsertId();
 
       $adImage = new AdImage();
       $adImage->imageUrl = $url;
       $adImage->advertisementId = $lastAdvertisementId;
-      $this->adImageRepository->addImageForAd($adImage);
+      $this->adImageContract->addImageForAd($adImage);
     }
 
     public function deleteAdvertisement($idAd) {
-      $this->advertisementRepository->deleteAdvertisement($idAd);
+      $this->advertisementContract->deleteAdvertisement($idAd);
     }
 
     public function editAdvertisement($id, $title, $price, $description, $firstRegistration, $fuelType, $categoryId, $subCategory, $url = null) {
@@ -62,26 +62,26 @@
       $newAd->categoryId = $categoryId;
       $newAd->subCategory = $subCategory;
 
-      $this->advertisementRepository->editAdvertisement($newAd);
+      $this->advertisementContract->editAdvertisement($newAd);
 
       if ($url !== null) {
         $adImage = new AdImage();
         $adImage->imageUrl = $url;
         $adImage->advertisementId = $id;
-        $this->adImageRepository->addImageForAd($adImage);
+        $this->adImageContract->addImageForAd($adImage);
       }
     }
 
     public function getAdId($adId) {
-      return $this->advertisementRepository->getAdvertisementId($adId);
+      return $this->advertisementContract->getAdvertisementId($adId);
     }
 
     public function getAllAdvertisement() {
-      return $this->advertisementRepository->getAllAdvertisement();
+      return $this->advertisementContract->getAllAdvertisement();
     }
 
     public function filterAdsByTitle($input) {
-      return $this->advertisementRepository->filterAdsByTitle($input);
+      return $this->advertisementContract->filterAdsByTitle($input);
     }
   }
 

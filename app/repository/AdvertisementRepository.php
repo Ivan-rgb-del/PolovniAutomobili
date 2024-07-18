@@ -1,15 +1,14 @@
 <?php
 
   require_once __DIR__ . '/../database/Base.php';
-  require_once __DIR__ . '/../interfaces/IAdvertisementRepository.php';
+  require_once __DIR__ . '/../interfaces/AdvertisementContract.php';
   require_once __DIR__ . '/../models/Advertisement.php';
 
   if (session_status() == PHP_SESSION_NONE) {
     session_start();
   }
 
-  class AdvertisementRepository extends Base implements IAdvertisementRepository {
-    // Method for creating ads
+  class AdvertisementRepository extends Base implements AdvertisementContract {
     public function createAdvertisement(Advertisement $advertisement)
     {
       $title = $this->conn->real_escape_string($advertisement->title);
@@ -23,7 +22,6 @@
       $categoryId = $this->conn->real_escape_string($advertisement->categoryId);
       $subCategory = $this->conn->real_escape_string($advertisement->subCategory);
 
-      // Calling the user ad count function
       $countOfUserAds = $this->countOfCreatedAdsByUser($userId);
 
       if ($countOfUserAds < 3) {
@@ -43,7 +41,6 @@
       return $this->conn->insert_id;
     }
 
-    // Method to calculate the number of posts created by a user
     public function countOfCreatedAdsByUser($userId)
     {
       $result = $this->conn->query(

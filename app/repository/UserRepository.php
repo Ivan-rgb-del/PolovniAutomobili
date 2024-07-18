@@ -1,11 +1,10 @@
 <?php
 
   require_once __DIR__ . "/../database/Base.php";
-  require_once __DIR__ . "/../interfaces/IUserRepository.php";
+  require_once __DIR__ . "/../interfaces/UserContract.php";
   require_once __DIR__ . "/../models/User.php";
 
-  class UserRepository extends Base implements IUserRepository {
-    // register new user
+  class UserRepository extends Base implements UserContract {
     public function registerUser(User $user) {
       $firstName = $this->conn->real_escape_string($user->firstName);
       $lastName = $this->conn->real_escape_string($user->lastName);
@@ -34,7 +33,6 @@
       $stmt->close();
     }
 
-    // check if email exist
     public function emailExist($email)
     {
       $stmt = $this->conn->prepare("SELECT * FROM users WHERE email = ?");
@@ -44,7 +42,6 @@
       return $user;
     }
 
-    //login user
     public function loginUser($email, $password)
     {
       $email = $this->conn->real_escape_string($email);
@@ -65,7 +62,6 @@
       return null;
     }
 
-    // edit for new password
     public function editUser($email, $password)
     {
       $email = $this->conn->real_escape_string($email);

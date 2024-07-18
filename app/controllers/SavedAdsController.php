@@ -1,27 +1,28 @@
 <?php
 
   require_once __DIR__ . '/../repository/SavedAdsRepository.php';
+  require_once __DIR__ . '/../models/SavedAds.php';
 
   class SavedAdsController {
-    private $savedAdsRepo;
+    private readonly SavedAdsContract $savedAdsContract;
 
-    public function __construct(ISavedAdsRepository $savedAdsRepo)
+    public function __construct(SavedAdsRepository $savedAdsRepo)
     {
-      $this->savedAdsRepo = $savedAdsRepo;
+      $this->savedAdsContract = $savedAdsRepo;
     }
 
     public function saveAdvertisement($userId, $adId) {
-      return $this->savedAdsRepo->saveAdvertisement($userId, $adId);
+      return $this->savedAdsContract->saveAdvertisement($userId, $adId);
     }
 
     public function getAllSavedAdsByUser($userId) {
-      return $this->savedAdsRepo->getAllSavedAdsByUser($userId);
+      return $this->savedAdsContract->getAllSavedAdsByUser($userId);
     }
 
     public function deleteSavedAd($adId) {
-      $userIds = $this->savedAdsRepo->getUserWhoSavedAd($adId);
+      $userIds = $this->savedAdsContract->getUserWhoSavedAd($adId);
       foreach ($userIds as $userId) {
-        $this->savedAdsRepo->deleteSavedAd($userId, $adId);
+        $this->savedAdsContract->deleteSavedAd($userId, $adId);
       }
     }
   }

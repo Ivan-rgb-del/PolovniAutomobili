@@ -1,6 +1,6 @@
 <?php
 
-  interface IAdImageRepository {
+  interface AdImageContract {
     public function addImageForAd(AdImage $adImage);
     public function getImageOfAd($adId);
     public function deleteAdvertisementImage($adId);

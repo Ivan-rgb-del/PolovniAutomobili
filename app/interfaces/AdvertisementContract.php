@@ -1,6 +1,6 @@
 <?php
 
-  interface IAdvertisementRepository {
+  interface AdvertisementContract {
     public function createAdvertisement(Advertisement $advertisement);
     public function countOfCreatedAdsByUser($userId);
     public function getLastInsertId();

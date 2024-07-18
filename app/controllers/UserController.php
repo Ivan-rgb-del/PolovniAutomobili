@@ -1,14 +1,14 @@
 <?php
 
   require_once __DIR__ . '/../repository/UserRepository.php';
-  require_once __DIR__ . '/../database/Base.php';
+  require_once __DIR__ . '/../models/User.php';
 
   class UserController {
-    private $userRepository;
+    private readonly UserContract $userContract;
 
-    public function __construct(IUserRepository $userRepository)
+    public function __construct(UserRepository $userRepository)
     {
-      $this->userRepository = $userRepository;
+      $this->userContract = $userRepository;
     }
 
     // REGISTER
@@ -25,21 +25,21 @@
       $newUser->profileImage = $profileImage;
       $newUser->phoneNumber = $phoneNumber;
 
-      return $this->userRepository->registerUser($newUser);
+      return $this->userContract->registerUser($newUser);
     }
 
     // LOGIN
     public function loginUser(string $email, string $password) {
-      return $this->userRepository->loginUser($email, $password);
+      return $this->userContract->loginUser($email, $password);
     }
 
     // EDIT USER
     public function editUser(string $email, string $password) {
-      return $this->userRepository->editUser($email, $password);
+      return $this->userContract->editUser($email, $password);
     }
 
     public function getUserAds($userId) {
-      return $this->userRepository->getUserAds($userId);
+      return $this->userContract->getUserAds($userId);
     }
   }
 
