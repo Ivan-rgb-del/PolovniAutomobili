@@ -13,7 +13,7 @@
   $savedAdRepo = new SavedAdsRepository();
   $savedAdController = new SavedAdsController($savedAdRepo);
 
-  $result = $savedAdController->deleteSavedAd($userId, $adId);
+  $result = $savedAdController->deleteSavedAd($adId);
 
   header("Location: ../../views/index.php");
 
