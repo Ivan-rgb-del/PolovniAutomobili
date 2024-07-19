@@ -1,11 +1,8 @@
 import './App.css';
-import AdsService from './services/AdsService';
 
 function App() {
   return (
-    <div className="App">
-      <AdsService />
-    </div>
+    <h1 className='text-3xl font-bold underline'>Welcome</h1>
   );
 }
 
