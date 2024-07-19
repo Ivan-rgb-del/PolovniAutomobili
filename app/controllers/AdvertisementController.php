@@ -18,7 +18,6 @@
       $this->adImageContract = $adImageRepository;
     }
 
-    // CREATE AD
     public function createAdvertisement(
       string $title, $price, string $description,
       string $firstRegistration, string $fuelType, int $categoryId,

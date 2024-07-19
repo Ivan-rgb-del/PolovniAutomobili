@@ -11,7 +11,6 @@
       $this->userContract = $userRepository;
     }
 
-    // REGISTER
     public function registerUser(
       string $firstName, string $lastName, string $email,
       string $password, string $role, string $profileImage,
@@ -30,12 +29,10 @@
       return $this->userContract->registerUser($newUser);
     }
 
-    // LOGIN
     public function loginUser(string $email, string $password) {
       return $this->userContract->loginUser($email, $password);
     }
 
-    // EDIT USER
     public function editUser(string $email, string $password) {
       return $this->userContract->editUser($email, $password);
     }

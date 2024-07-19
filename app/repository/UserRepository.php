@@ -15,9 +15,6 @@
       $phoneNumber = $this->conn->real_escape_string($user->phoneNumber);
 
       $stmt = $this->conn->prepare("INSERT INTO users (first_name, last_name, email, password, role, profile_image, phone_number) VALUES (?, ?, ?, ?, ?, ?, ?)");
-      if (!$stmt) {
-        die("Error preparing statement!");
-      }
 
       $user = $this->emailExist($email);
       if (!$user) {
@@ -26,10 +23,7 @@
 
       $stmt->bind_param("ssssssi", $firstName, $lastName, $email, $password, $role, $profileImage, $phoneNumber);
 
-      if ($stmt->execute() === false) {
-        die("Error executing statement: " . $stmt->error);
-      }
-
+      $stmt->execute();
       $stmt->close();
     }
 
