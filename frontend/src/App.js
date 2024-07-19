@@ -1,11 +1,20 @@
-import './App.css';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Layout from "./pages/Layout";
+import RegisterUser from "./components/UserComponents/RegisterUser";
+import LoginUser from "./components/UserComponents/LoginUser";
 
-function App() {
+const App = () => {
   return (
     <div>
-      <h1 className='text-3xl font-bold underline'>Welcome</h1>
+      <BrowserRouter>
+        <Routes>
+          <Route index element={<Layout />} />
+          <Route path="/register-user" element={<RegisterUser />} />
+          <Route path="/login-user" element={<LoginUser />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
-}
+};
 
 export default App;

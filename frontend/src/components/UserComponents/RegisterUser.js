@@ -1,9 +1,12 @@
-import React from "react";
+import React from 'react';
 
 const RegisterUser = () => {
   return (
-    <h1>Register User</h1>
-  )
+    <div>
+      <h2>Register User</h2>
+      <p>Register a new user here.</p>
+    </div>
+  );
 };
 
 export default RegisterUser;
