@@ -12,6 +12,9 @@
   $adImageRepo = new AdImageRepository();
   $adController = new AdvertisementController($adRepo, $adImageRepo);
 
-  $ads = $adController->getAllAdvertisement();
+  if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+    $ads = $adController->getAllAdvertisement();
+    echo json_encode($ads);
+  }
 
 ?>
