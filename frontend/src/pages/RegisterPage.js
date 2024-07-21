@@ -12,6 +12,15 @@ const RegisterPage = () => {
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(false);
 
+  const options = [
+    "seller",
+    "user"
+  ];
+
+  const onOptionChangeHandler = (event) => {
+    setRole(event.target.value);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -75,13 +84,16 @@ const RegisterPage = () => {
           />
         </div>
         <div>
-          <label>Role:</label>
-          <input
-            type="text"
-            value={role}
-            onChange={(e) => setRole(e.target.value)}
-            required
-          />
+          <select onChange={onOptionChangeHandler}>
+            <option>Choose role</option>
+            {options.map((option, index) => {
+              return (
+                <option key={index}>
+                  {option}
+                </option>
+              );
+            })}
+          </select>
         </div>
         <div>
           <label>Image url:</label>
