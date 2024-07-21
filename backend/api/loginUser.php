@@ -14,27 +14,12 @@
 
   $data = json_decode(file_get_contents('php://input'), true);
 
-  $firstName = $data['firstName'] ?? '';
-  $lastName = $data['lastName'] ?? '';
   $email = $data['email'] ?? '';
   $password = $data['password'] ?? '';
-  $role = $data['role'] ?? '';
-  $imageUrl = $data['imageUrl'] ?? '';
-  $phoneNumber = $data['phoneNumber'] ?? '';
-
-  password_hash($password, PASSWORD_BCRYPT);
 
   if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $registerUser = $userController->registerUser(
-      $firstName,
-      $lastName,
-      $email,
-      $password,
-      $role,
-      $imageUrl,
-      $phoneNumber
-    );
-    echo json_encode(['message' => 'User registered successfully']);
+    $registerUser = $userController->loginUser($email, $password);
+    echo json_encode(['message' => 'User logged successfully']);
   }
 
 ?>
