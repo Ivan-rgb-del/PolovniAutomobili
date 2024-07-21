@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./pages/Layout";
-import RegisterUser from "./components/UserComponents/RegisterUser";
+import RegisterPage from "./pages/RegisterPage";
 import LoginUser from "./components/UserComponents/LoginUser";
 
 const App = () => {
@@ -9,7 +9,7 @@ const App = () => {
       <BrowserRouter>
         <Routes>
           <Route index element={<Layout />} />
-          <Route path="/register-user" element={<RegisterUser />} />
+          <Route path="/register-user" element={<RegisterPage />} />
           <Route path="/login-user" element={<LoginUser />} />
         </Routes>
       </BrowserRouter>
