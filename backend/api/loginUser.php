@@ -18,8 +18,21 @@
   $password = $data['password'] ?? '';
 
   if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $registerUser = $userController->loginUser($email, $password);
-    echo json_encode(['message' => 'User logged successfully']);
+    $user = $userController->loginUser($email, $password);
+
+    $_SESSION['logged'] = true;
+    $_SESSION['userId'] = $user['id'];
+    $_SESSION['userRole'] = $user['role'];
+
+    echo json_encode(
+      [
+        'message' => 'Login successful',
+        'user' => [
+          'id' => $user['id'],
+          'email' => $user['email'],
+          'role' => $user['role']
+        ]
+    ]);
   }
 
 ?>

@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import UserContext from '../context/UserContext';
 import LoginUserService from '../services/LoginUserService';
 
 const LoginPage = () => {
@@ -6,6 +7,7 @@ const LoginPage = () => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(false);
+  const { login } = useContext(UserContext);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -14,7 +16,7 @@ const LoginPage = () => {
       const response = await LoginUserService(email, password);
       setSuccess(true);
       setError(null);
-      console.log('Login successful', response);
+      login(response.user);
     } catch (err) {
       setError(err.message);
       setSuccess(false);

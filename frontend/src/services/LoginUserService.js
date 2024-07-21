@@ -6,7 +6,8 @@ const LoginUserService = async (email, password) => {
   try {
     const response = await fetch(API_URL, {
       method: 'POST',
-      body: [email, password]
+      body: [email, password],
+      credentials: 'include'
     });
 
     if (!response.ok) {
