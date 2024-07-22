@@ -1,19 +1,21 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Outlet, Link } from 'react-router-dom';
+import { UserContext } from '../context/UserContext';
 
 const Layout = () => {
+  const { logged, handleLogout } = useContext(UserContext);
 
   return (
     <div>
       <nav>
-        <ul>
-          <li>
-            <Link to="/register-user">Register</Link>
-          </li>
-          <li>
+        {!logged ? (
+          <div>
             <Link to="/login-user">Login</Link>
-          </li>
-        </ul>
+            <Link to="/register-user">Register</Link>
+          </div>
+        ) : (
+          <button onClick={handleLogout}>Logout</button>
+        )}
       </nav>
       <Outlet />
     </div>

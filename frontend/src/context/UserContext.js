@@ -8,7 +8,7 @@ export const UserProvider = ({ children }) => {
   const [userRole, setUserRole] = useState('');
 
   useEffect(() => {
-    const isLogged = localStorage.getItem('logged');
+    const isLogged = localStorage.getItem('logged') === 'true';
     const storedUserId = localStorage.getItem('userId');
     const storedUserRole = localStorage.getItem('userRole');
 
