@@ -20,18 +20,23 @@
   if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $user = $userController->loginUser($email, $password);
 
-    $_SESSION['logged'] = true;
-    $_SESSION['userId'] = $user['id'];
-    $_SESSION['userRole'] = $user['role'];
-
-    echo json_encode(
-      [
-        'message' => 'Login successful',
-        'user' => [
-          'id' => $user['id'],
-          'email' => $user['email'],
-          'role' => $user['role']
-        ]
+    if ($user) {
+      echo json_encode([
+        'success' => true,
+        'userId' => $user['id'],
+        'userRole' => $user['role'],
+        'message' => 'Login successful'
+      ]);
+    } else {
+      echo json_encode([
+        'success' => false,
+        'message' => 'Invalid credentials'
+      ]);
+    }
+  } else {
+    echo json_encode([
+      'success' => false,
+      'message' => 'Invalid request method'
     ]);
   }
 
