@@ -20,7 +20,7 @@
 
     public function createAdvertisement(
       string $title, $price, string $description,
-      string $firstRegistration, string $fuelType, int $categoryId,
+      int $firstRegistration, string $fuelType, int $categoryId,
       int $userId, int $subCategory, string $url
     ) {
       $newAdvertisement = new Advertisement();
