@@ -1,31 +1,25 @@
-import React from "react";
-
 const API_URL = "http://localhost/PolovniAutomobili/backend/api/loginUser.php";
 
 const LoginUserService = async (email, password) => {
   try {
-    const formData = new FormData();
-    formData.append('email', email);
-    formData.append('password', password);
-
     const response = await fetch(API_URL, {
       method: 'POST',
-      body: formData,
       headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
+        'Content-Type': 'application/json',
       },
-      credentials: 'include'
+      body: JSON.stringify({ email, password }),
     });
 
     if (!response.ok) {
-      throw new Error('Network response was not ok ' + response.statusText);
+      throw new Error(`HTTP error! status: ${response.status}`);
     }
 
-    return await response.json();
+    const data = await response.json();
+    return data;
   } catch (error) {
-    console.error('Error logging in user:', error);
-    throw new Error('Error logging in user: ' + error.message);
+    console.error('There was an error with the login request:', error);
+    return { success: false, message: 'Login failed. Please try again later.' };
   }
-}
+};
 
 export default LoginUserService;

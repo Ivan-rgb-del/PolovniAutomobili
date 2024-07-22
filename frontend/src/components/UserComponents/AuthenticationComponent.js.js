@@ -1,8 +1,7 @@
-import React, { createContext, useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
+import LoginPage from "../../pages/LoginPage";
 
-export const UserContext = createContext();
-
-export const UserProvider = ({ children }) => {
+const AuthenticationComponent = () => {
   const [logged, setLogged] = useState(false);
   const [userId, setUserId] = useState(null);
   const [userRole, setUserRole] = useState('');
@@ -19,27 +18,31 @@ export const UserProvider = ({ children }) => {
     }
   }, []);
 
-  const handleLogin = (userId, userRole) => {
-    setLogged(true);
-    setUserId(userId);
-    setUserRole(userRole);
-    localStorage.setItem('logged', true);
-    localStorage.setItem('userId', userId);
-    localStorage.setItem('userRole', userRole);
-  };
-
   const handleLogout = () => {
     setLogged(false);
     setUserId(null);
     setUserRole('');
+
     localStorage.removeItem('logged');
     localStorage.removeItem('userId');
     localStorage.removeItem('userRole');
   };
 
+  const handleLogin = (userId, userRole) => {
+    setLogged(true);
+    setUserId(userId);
+    setUserRole(userRole);
+  };
+
   return (
-    <UserContext.Provider value={{ logged, userId, userRole, handleLogin, handleLogout }}>
-      {children}
-    </UserContext.Provider>
+    <div>
+      {logged ? (
+        <button onClick={handleLogout}>Logout</button>
+      ) : (
+        <LoginPage onLogin={handleLogin} />
+      )}
+    </div>
   );
-};
+}
+
+export default AuthenticationComponent;
