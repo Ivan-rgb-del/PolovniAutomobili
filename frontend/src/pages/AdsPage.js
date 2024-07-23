@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import AdsService from "../services/AdsService";
 import SaveAdService from "../services/SaveAdService";
 
@@ -46,7 +47,9 @@ const AdsPage = () => {
           <p>Year: {ad.first_registration}</p>
           <p>Fuel: {ad.fuel_type}</p>
           <p>Description: {ad.description}</p>
-          <a href="#">More</a>
+          <Link to={`/ad/${ad.id}`}>
+            <button>More</button>
+          </Link>
           <br />
           <button onClick={() => handleSave(ad.id)}>Save</button>
           <br />

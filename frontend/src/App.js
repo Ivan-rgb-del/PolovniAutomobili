@@ -5,6 +5,7 @@ import LoginPage from "./pages/LoginPage";
 import { UserProvider } from "./context/UserContext";
 import AddNewAdPage from "./pages/AddNewAdPage";
 import AdsPage from "./pages/AdsPage";
+import AdDetailsPage from "./pages/AdDetailPage";
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
           <Route path="/login-user" element={<LoginPage />} />
           <Route path="/add-new-ad" element={<AddNewAdPage />} />
           <Route path="/look-for-new-ads" element={<AdsPage />} />
+          <Route path="/ad/:id" element={<AdDetailsPage />} />
         </Routes>
       </BrowserRouter>
     </UserProvider>
