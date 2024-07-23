@@ -14,7 +14,7 @@
 
   if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     $ads = $adController->getAllAdvertisement();
-    echo json_encode($ads);
+    echo json_encode($ads); 
   }
 
 ?>
