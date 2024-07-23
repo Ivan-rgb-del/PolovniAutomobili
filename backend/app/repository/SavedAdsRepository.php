@@ -8,10 +8,25 @@
   class SavedAdsRepository extends Base implements SavedAdsContract {
     public function saveAdvertisement(int $userId, int $adId)
     {
-      $stmt = $this->conn->prepare("INSERT INTO saved_ads (user_id, advertisement_id) VALUES (?, ?)");
-      $stmt->bind_param("ii", $userId, $adId);
-      $stmt->execute();
-      $stmt->close();
+      try {
+        $stmt = $this->conn->prepare("INSERT INTO saved_ads (user_id, advertisement_id) VALUES (?, ?)");
+        if ($stmt === false) {
+          throw new Exception('Prepare failed: ' . $this->conn->error);
+        }
+
+        $stmt->bind_param("ii", $userId, $adId);
+        $success = $stmt->execute();
+
+        if ($success === false) {
+          throw new Exception('Execute failed: ' . $stmt->error);
+        }
+
+        $stmt->close();
+        return $success;
+      } catch (Exception $e) {
+        error_log('Save Advertisement Error: ' . $e->getMessage());
+        return false;
+      }
     }
 
     public function getAllSavedAdsByUser(int $userId) {

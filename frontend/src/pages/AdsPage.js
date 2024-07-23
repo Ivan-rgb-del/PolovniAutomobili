@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import AdsService from "../services/AdsService";
+import SaveAdService from "../services/SaveAdService";
 
 const AdsPage = () => {
   const [ads, setAds] = useState([]);
@@ -21,6 +22,17 @@ const AdsPage = () => {
     getAds();
   }, [])
 
+  const handleSave = async (adId) => {
+    const userId = localStorage.getItem('userId');
+
+    try {
+      const response = await SaveAdService({ advertisement_id: adId, user_id: userId });
+      alert(response.message);
+    } catch (err) {
+      setError('An error occurred while saving the ad');
+    }
+  };
+
   if (loading) return <p>Loading...</p>;
 
   return (
@@ -36,7 +48,7 @@ const AdsPage = () => {
           <p>Description: {ad.description}</p>
           <a href="#">More</a>
           <br />
-          <a href="#">Save</a>
+          <button onClick={() => handleSave(ad.id)}>Save</button>
           <br />
           <br />
         </div>
