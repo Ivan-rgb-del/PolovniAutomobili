@@ -34,6 +34,9 @@ const AdsPage = () => {
           <p>Year: {ad.first_registration}</p>
           <p>Fuel: {ad.fuel_type}</p>
           <p>Description: {ad.description}</p>
+          <a href="#">More</a>
+          <br />
+          <a href="#">Save</a>
           <br />
           <br />
         </div>
