@@ -23,7 +23,7 @@
     $price = (int)$data['price'];
     $description = $data['description'];
     $first_registration = (int)$data['first_registration'];
-    $fuel_type = (int)$data['fuel_type'];
+    $fuel_type = $data['fuel_type'];
     $category_id = (int)$data['category_id'];
     $user_id = (int)$data['user_id'];
     $sub_category = (int)$data['sub_category'];
