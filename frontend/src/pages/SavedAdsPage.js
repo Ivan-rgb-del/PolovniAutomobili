@@ -1,19 +1,21 @@
 import React, { useEffect, useState } from "react";
 import GetSavedAdsService from "../services/GetSavedAdsService";
+import RemoveSavedAdService from "../services/RemoveSavedAdService";
 
 const SavedAdsPage = () => {
   const [savedAds, setSavedAds] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  const userId = localStorage.getItem('userId');
+
   useEffect(() => {
     const fetchSavedAds = async () => {
-      const userId = localStorage.getItem('userId');
       try {
         const data = await GetSavedAdsService(userId);
         setSavedAds(data);
       } catch (err) {
-        setError(err.message);
+        setError("Failed to fetch saved ads!");
       } finally {
         setLoading(false);
       }
@@ -22,8 +24,21 @@ const SavedAdsPage = () => {
     fetchSavedAds();
   }, []);
 
+  const handleRemove = async (adId) => {
+    try {
+      const result = await RemoveSavedAdService(adId, userId);
+
+      if (result.message === "Ad removed successfully.") {
+        setSavedAds(savedAds.filter(ad => ad.id !== adId));
+      } else {
+        alert('An error occurred while removing the ad');
+      }
+    } catch (error) {
+      alert('An error occurred while removing the ad');
+    }
+  };
+
   if (loading) return <p>Loading...</p>;
-  if (error) return <p>{error}</p>;
 
   return (
     <div>
@@ -38,6 +53,7 @@ const SavedAdsPage = () => {
             <p>Description: {ad.description}</p>
             <p>First Registration: {ad.first_registration}</p>
             <p>Fuel Type: {ad.fuel_type}</p>
+            <button onClick={() => handleRemove(ad.id)}>Remove</button>
             <br /><br />
           </div>
         ))
