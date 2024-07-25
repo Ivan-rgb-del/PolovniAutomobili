@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { GeTSellerAds } from '../services/GetSellerAds';
 
 const SellerAdspage = () => {
   const [ads, setAds] = useState([]);
@@ -9,11 +10,7 @@ const SellerAdspage = () => {
     const fetchMyAds = async () => {
       const userId = localStorage.getItem('userId');
       try {
-        const response = await fetch(`http://localhost/PolovniAutomobili/backend/api/getSellerAds.php?user_id=${userId}`);
-        if (!response.ok) {
-          throw new Error('Failed to fetch ads');
-        }
-        const data = await response.json();
+        const data = await GeTSellerAds(userId);
         setAds(data);
       } catch (err) {
         setError(err.message);
