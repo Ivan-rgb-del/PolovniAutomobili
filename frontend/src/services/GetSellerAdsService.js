@@ -1,4 +1,4 @@
-export const GeTSellerAds = async (userId) => {
+export const GeTSellerAdsService = async (userId) => {
   try {
     const response = await fetch(`http://localhost/PolovniAutomobili/backend/api/getSellerAds.php?user_id=${userId}`);
     if (!response.ok) {

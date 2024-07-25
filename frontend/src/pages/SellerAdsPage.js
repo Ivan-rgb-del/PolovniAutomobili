@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { GeTSellerAds } from '../services/GetSellerAds';
+import { GeTSellerAdsService } from '../services/GetSellerAdsService';
+import { DeleteSellerAdService } from '../services/DeleteSellerAdService';
 
 const SellerAdspage = () => {
   const [ads, setAds] = useState([]);
@@ -10,7 +11,7 @@ const SellerAdspage = () => {
     const fetchMyAds = async () => {
       const userId = localStorage.getItem('userId');
       try {
-        const data = await GeTSellerAds(userId);
+        const data = await GeTSellerAdsService(userId);
         setAds(data);
       } catch (err) {
         setError(err.message);
@@ -24,12 +25,7 @@ const SellerAdspage = () => {
 
   const handleDelete = async (adId) => {
     try {
-      const response = await fetch(`http://localhost/PolovniAutomobili/backend/api/deleteSellerAd.php?adId=${adId}`, {
-        method: 'DELETE',
-      });
-      if (!response.ok) {
-        throw new Error('Failed to delete ad');
-      }
+      await DeleteSellerAdService(adId);
       setAds(ads.filter(ad => ad.id !== adId));
     } catch (err) {
       setError(err.message);
