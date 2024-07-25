@@ -27,7 +27,7 @@ const SellerAdspage = () => {
 
   const handleDelete = async (adId) => {
     try {
-      const response = await fetch(`http://localhost/PolovniAutomobili/backend/api/deleteSellerAd.php?id=${adId}`, {
+      const response = await fetch(`http://localhost/PolovniAutomobili/backend/api/deleteSellerAd.php?adId=${adId}`, {
         method: 'DELETE',
       });
       if (!response.ok) {

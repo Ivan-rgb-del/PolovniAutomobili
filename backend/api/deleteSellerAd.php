@@ -1,12 +1,12 @@
 <?php
 
-require_once __DIR__ . '/../repository/AdvertisementRepository.php';
-require_once __DIR__ . '/../repository/AdImageRepository.php';
-require_once __DIR__ . '/../repository/SavedAdsRepository.php';
+require_once __DIR__ . "/../app/repository/AdvertisementRepository.php";
+require_once __DIR__ . '/../app/repository/AdImageRepository.php';
+require_once __DIR__ . '/../app/repository/SavedAdsRepository.php';
 
-require_once __DIR__ . '/../controllers/AdvertisementController.php';
-require_once __DIR__ . '/../controllers/AdImageController.php';
-require_once __DIR__ . '/../controllers/SavedAdsController.php';
+require_once __DIR__ . '/../app/controllers/AdvertisementController.php';
+require_once __DIR__ . '/../app/controllers/AdImageController.php';
+require_once __DIR__ . '/../app/controllers/SavedAdsController.php';
 
 $adsRepo = new AdvertisementRepository();
 $adImageRepo = new AdImageRepository();
@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     exit;
 }
 
-$adId = $_GET['id'] ?? null;
+$adId = $_GET['adId'] ?? null;
 
 if ($adId === null) {
     http_response_code(400);
@@ -35,9 +35,9 @@ if ($adId === null) {
 }
 
 try {
-    $savedAdController->deleteSavedAd($advertisementId);
-    $adImageController->deleteAdvertisementImage($advertisementId);
-    $adsController->deleteAdvertisement($advertisementId);
+    $savedAdController->deleteSavedAd($adId);
+    $adImageController->deleteAdvertisementImage($adId);
+    $adsController->deleteAdvertisement($adId);
     echo json_encode(["message" => "Ad deleted successfully."]);
 } catch (Exception $e) {
     http_response_code(500);
