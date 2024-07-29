@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react';
 import LoginUserService from '../services/LoginUserService';
 import { UserContext } from '../context/UserContext';
+import { Link } from 'react-router-dom';
 
 function LoginPage() {
   const [email, setEmail] = useState('');
@@ -32,6 +33,7 @@ function LoginPage() {
         onChange={(e) => setPassword(e.target.value)}
       />
       <button onClick={handleLoginClick}>Login</button>
+      <Link to="/reset-password">Forgot password?</Link>
     </div>
   );
 }

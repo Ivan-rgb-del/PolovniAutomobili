@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate  } from 'react-router-dom';
+import { useParams  } from 'react-router-dom';
 import { EditAdService } from '../services/EditAdService';
 
 const EditAdPage = () => {
   const { adId } = useParams();
-  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     id: adId,
     title: '',
