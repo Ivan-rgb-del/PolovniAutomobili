@@ -23,7 +23,7 @@ const App = () => {
           <Route path="/ad/:id" element={<AdDetailsPage />} />
           <Route path="/saved-ads" element={<SavedAdsPage />} />
           <Route path="/my-ads" element={<SellerAdsPage />} />
-          <Route path="/edit-ad/:id" element={<EditAdPage />} />
+          <Route path="/edit-ad/:adId" element={<EditAdPage />} />
         </Routes>
       </BrowserRouter>
     </UserProvider>
