@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { GeTSellerAdsService } from '../services/GetSellerAdsService';
 import { DeleteSellerAdService } from '../services/DeleteSellerAdService';
+import { Link } from 'react-router-dom';
 
 const SellerAdspage = () => {
   const [ads, setAds] = useState([]);
@@ -32,6 +33,7 @@ const SellerAdspage = () => {
     }
   };
 
+
   if (loading) return <p>Loading...</p>;
   if (error) return <p>{error}</p>;
 
@@ -46,7 +48,10 @@ const SellerAdspage = () => {
             <p>Description: {ad.description}</p>
             <p>First Registration: {ad.first_registration}</p>
             <p>Fuel Type: {ad.fuel_type}</p>
-            <button onClick={() => handleDelete(ad.id)}>Delete</button>
+            <button onClick={() => handleDelete(ad.id)}>Delete</button><br />
+            <Link to={`/edit-ad/${ad.id}`}>
+              <button>Edit</button>
+            </Link>
             <br /><br />
           </li>
         ))}

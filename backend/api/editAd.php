@@ -26,12 +26,33 @@
     exit;
   }
 
-  $adDetails = $adController->getAdId($adId);
+  if ($_SERVER['REQUEST_METHOD'] === 'PUT') {
+    $data = json_decode(file_get_contents('php://input'), true);
 
-  if ($adDetails) {
-    echo json_encode($adDetails);
-  } else {
-    http_response_code(404);
-    echo json_encode(["message" => "Ad not found."]);
+    $title = $data['title'];
+    $price = (int)$data['price'];
+    $description = $data['description'];
+    $first_registration = (int)$data['first_registration'];
+    $fuel_type = $data['fuel_type'];
+    $category_id = (int)$data['category_id'];
+    $sub_category = (int)$data['sub_category'];
+    $imageUrl = "image.jpg";
+
+    if ($_SERVER['REQUEST_METHOD'] === 'PUT') {
+      $createAd = $adController->editAdvertisement(
+        $adId,
+        $title,
+        $price,
+        $description,
+        $first_registration,
+        $fuel_type,
+        $category_id,
+        $sub_category,
+        $imageUrl
+      );
+
+      echo json_encode(['message' => 'Ad updated successfully']);
+    }
   }
+
 ?>

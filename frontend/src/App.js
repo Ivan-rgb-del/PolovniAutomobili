@@ -8,6 +8,7 @@ import AdsPage from "./pages/AdsPage";
 import AdDetailsPage from "./pages/AdDetailPage";
 import SavedAdsPage from "./pages/SavedAdsPage";
 import SellerAdsPage from "./pages/SellerAdsPage";
+import EditAdPage from "./pages/EditAdPage";
 
 const App = () => {
   return (
@@ -22,6 +23,7 @@ const App = () => {
           <Route path="/ad/:id" element={<AdDetailsPage />} />
           <Route path="/saved-ads" element={<SavedAdsPage />} />
           <Route path="/my-ads" element={<SellerAdsPage />} />
+          <Route path="/edit-ad/:id" element={<EditAdPage />} />
         </Routes>
       </BrowserRouter>
     </UserProvider>
