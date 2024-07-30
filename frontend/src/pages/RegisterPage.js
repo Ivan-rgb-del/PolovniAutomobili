@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import RegisterUserService from "../services/RegisterUserService";
+import { useNavigate } from "react-router-dom";
 
 const RegisterPage = () => {
   const [firstName, setFirstName] = useState('');
@@ -11,6 +12,7 @@ const RegisterPage = () => {
   const [phoneNumber, setPhoneNumber] = useState('');
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(false);
+  const navigate = useNavigate();
 
   const options = [
     "seller",
@@ -45,6 +47,7 @@ const RegisterPage = () => {
       setRole('');
       setImageUrl('');
       setPhoneNumber('');
+      navigate("/login-user", { replace: true });
     } catch (err) {
       setError(err.message);
       setSuccess(false);
