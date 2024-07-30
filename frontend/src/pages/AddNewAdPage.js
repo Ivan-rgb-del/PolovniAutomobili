@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import AddNewAdService from '../services/AddNewAdService';
+import { useNavigate } from 'react-router-dom';
 
 const CreateAdPage = () => {
   const [formData, setFormData] = useState({
@@ -12,6 +13,7 @@ const CreateAdPage = () => {
     user_id: localStorage.getItem('userId'),
     sub_category: 0
   });
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -20,6 +22,7 @@ const CreateAdPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     await AddNewAdService(formData);
+    navigate("/my-ads", { replace: true });
   };
 
   return (
