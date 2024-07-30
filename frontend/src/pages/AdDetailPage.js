@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import SaveAdService from '../services/SaveAdService';
 
 const AdDetailsPage = () => {
   const { id } = useParams();
@@ -26,17 +27,48 @@ const AdDetailsPage = () => {
     fetchAdDetails();
   }, [id]);
 
+  const handleSave = async (adId) => {
+    const userId = localStorage.getItem('userId');
+
+    try {
+      const response = await SaveAdService({ advertisement_id: adId, user_id: userId });
+      alert(response.message);
+    } catch (err) {
+      setError('An error occurred while saving the ad');
+    }
+  };
+
   if (loading) return <p>Loading...</p>;
   if (error) return <p>{error}</p>;
   if (!adDetails) return <p>No ad details available.</p>;
 
   return (
-    <div>
-      <h1>{adDetails.title}</h1>
-      <p><strong>Price:</strong> ${adDetails.price}</p>
-      <p><strong>Description:</strong> {adDetails.description}</p>
-      <p><strong>First Registration:</strong> {adDetails.first_registration}</p>
-      <p><strong>Fuel Type:</strong> {adDetails.fuel_type}</p>
+    <div className="min-h-screen bg-gray-100 p-4">
+      <div className="max-w-4xl mx-auto bg-white p-6 rounded-lg shadow-md">
+        <h1 className="text-3xl font-bold text-gray-800 mb-4">{adDetails.title}</h1>
+        <p className="text-lg text-gray-600 mb-2">
+          <strong>Price: </strong>
+          ${adDetails.price}
+        </p>
+        <p className="text-lg text-gray-600 mb-2">
+          <strong>Description: </strong>
+          {adDetails.description}
+        </p>
+        <p className="text-lg text-gray-600 mb-2">
+          <strong>First Registration: </strong>
+          {adDetails.first_registration}
+        </p>
+        <p className="text-lg text-gray-600 mb-2">
+          <strong>Fuel Type: </strong>
+          {adDetails.fuel_type}
+        </p>
+        <button
+          onClick={() => handleSave(adDetails.id)}
+          className="px-4 py-2 bg-green-600 text-white font-semibold rounded-md shadow-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
+        >
+          Save
+        </button>
+      </div>
     </div>
   );
 };

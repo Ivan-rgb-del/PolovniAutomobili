@@ -64,7 +64,6 @@ const AdsPage = () => {
         {ads.map((ad) => (
           <div key={ad.id} className="border border-gray-300 rounded-lg p-4 shadow-sm bg-white mb-4">
             <h2 className="text-xl font-bold text-gray-800">{ad.title}</h2>
-            <img src="" alt={ad.title} className="w-full h-48 object-cover mt-2 mb-4" />
             <p className="text-gray-600">Price: {ad.price}€</p>
             <p className="text-gray-600">Year: {ad.first_registration}</p>
             <p className="text-gray-600">Fuel: {ad.fuel_type}</p>
