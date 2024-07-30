@@ -54,6 +54,11 @@
               <strong>Type:</strong> <?= $ad['category_id'] === 1 ? 'Car' : 'Van' ?>
             </p>
             <p class="card-text"><strong>Description:</strong> <?= $ad['description'] ?></p>
+            <a 
+              href="./app/handlers/processSaveAd.php?advertisementId=<?= $ad['id'] ?>" 
+              class="btn btn-secondary">
+              Save
+            </a>
           </div>
         </div>
       </div>
