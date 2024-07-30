@@ -1,18 +1,20 @@
 import React, { useState, useContext } from 'react';
 import LoginUserService from '../services/LoginUserService';
 import { UserContext } from '../context/UserContext';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 function LoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const { handleLogin } = useContext(UserContext);
+  const navigate = useNavigate();
 
   const handleLoginClick = async () => {
     const data = await LoginUserService(email, password);
 
     if (data.success) {
       handleLogin(data.userId, data.userRole);
+      navigate("/", { replace: true });
     } else {
       alert('Invalid credentials');
     }
