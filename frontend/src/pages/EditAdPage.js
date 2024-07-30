@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams  } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { EditAdService } from '../services/EditAdService';
 
 const EditAdPage = () => {
@@ -14,6 +14,7 @@ const EditAdPage = () => {
     category_id: 0,
     sub_category: 0
   });
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -23,6 +24,7 @@ const EditAdPage = () => {
     e.preventDefault();
     try {
       await EditAdService(formData.id);
+      navigate("/my-ads", { replace: true });
     } catch (error) {
       console.error('Failed to update ad', error);
     }
