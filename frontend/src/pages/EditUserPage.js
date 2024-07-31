@@ -1,14 +1,17 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import EditUserService from '../services/EditUserService';
 
 const EditUserPage = () => {
   const [email, setEmail] = useState('');
   const [newPassword, setNewPassword] = useState('');
+  const navigate = useNavigate();
 
   const handleEditUser = async (e) => {
     e.preventDefault();
     try {
       await EditUserService(email, newPassword);
+      navigate("/login-user", { replace: true });
     } catch (err) {
       console.error(err.message);
     }
