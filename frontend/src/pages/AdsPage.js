@@ -29,8 +29,8 @@ const AdsPage = () => {
     const userId = localStorage.getItem('userId');
 
     try {
-      const response = await SaveAdService({ advertisement_id: adId, user_id: userId });
-      alert(response.message);
+      await SaveAdService({ advertisement_id: adId, user_id: userId });
+      navigate("/saved-ads", { replace: true });
     } catch (err) {
       setError('An error occurred while saving the ad');
     }

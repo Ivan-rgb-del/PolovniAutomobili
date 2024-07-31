@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import SaveAdService from '../services/SaveAdService';
+import { useNavigate } from 'react-router-dom';
 
 const AdDetailsPage = () => {
   const { id } = useParams();
   const [adDetails, setAdDetails] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchAdDetails = async () => {
@@ -32,7 +34,7 @@ const AdDetailsPage = () => {
 
     try {
       const response = await SaveAdService({ advertisement_id: adId, user_id: userId });
-      alert(response.message);
+      navigate("/saved-ads", { replace: true });
     } catch (err) {
       setError('An error occurred while saving the ad');
     }
