@@ -11,17 +11,16 @@
   $userController = new UserController($userRepo);
 
   header('Content-Type: application/json; charset=utf-8');
-  echo json_encode($data);
 
   $data = json_decode(file_get_contents('php://input'), true);
 
-  $firstName = $data['first_name'] ?? '';
-  $lastName = $data['last_name'] ?? '';
+  $firstName = $data['firstName'] ?? '';
+  $lastName = $data['lastName'] ?? '';
   $email = $data['email'] ?? '';
   $password = $data['password'] ?? '';
   $role = $data['role'] ?? '';
-  $imageUrl = $data['profile_image'] ?? '';
-  $phoneNumber = $data['phone_number'] ?? 0;
+  $imageUrl = $data['imageUrl'] ?? '';
+  $phoneNumber = $data['phoneNumber'] ?? 0;
 
   password_hash($password, PASSWORD_BCRYPT);
 

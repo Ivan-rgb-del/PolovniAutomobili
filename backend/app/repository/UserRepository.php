@@ -21,10 +21,16 @@
         die("This email already exist!");
       }
 
+      // $role = "seller";
       $stmt->bind_param("ssssssi", $firstName, $lastName, $email, $password, $role, $profileImage, $phoneNumber);
 
-      $stmt->execute();
-      $stmt->close();
+      try {
+        $stmt->execute();
+        $stmt->close();
+      } catch(Exception $err) {
+        var_dump($err);
+        exit();
+      }
     }
 
     public function emailExist(string $email)
