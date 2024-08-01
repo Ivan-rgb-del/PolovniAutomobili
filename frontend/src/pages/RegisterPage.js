@@ -13,13 +13,6 @@ const RegisterPage = () => {
     phoneNumber: 0
   });
 
-  // const [firstName, setFirstName] = useState('');
-  // const [lastName, setlLastName] = useState('');
-  // const [email, setEmail] = useState('');
-  // const [password, setPassword] = useState('');
-  // const [role, setRole] = useState('');
-  // const [imageUrl, setImageUrl] = useState('');
-  // const [phoneNumber, setPhoneNumber] = useState('');
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(false);
   const navigate = useNavigate();
@@ -33,46 +26,12 @@ const RegisterPage = () => {
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
-  // const onOptionChangeHandler = (event) => {
-  //   setRole(event.target.value);
-  // };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     await RegisterUserService(formData);
     navigate("/login-user", { replace: true });
   };
-
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-
-  //   console.log({
-  //     firstName,
-  //     lastName,
-  //     email,
-  //     password,
-  //     role,
-  //     imageUrl,
-  //     phoneNumber
-  //   });
-
-  //   try {
-  //     await RegisterUserService({ firstName, lastName, email, password, role, imageUrl, phoneNumber });
-  //     setSuccess(true);
-  //     setError(null);
-  //     setFirstName('');
-  //     setlLastName('');
-  //     setEmail('');
-  //     setPassword('');
-  //     setRole('');
-  //     setImageUrl('');
-  //     setPhoneNumber('');
-  //     navigate("/login-user", { replace: true });
-  //   } catch (err) {
-  //     setError(err.message);
-  //     setSuccess(false);
-  //   }
-  // };
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
