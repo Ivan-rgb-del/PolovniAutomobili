@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { EditAdService } from '../services/EditAdService';
 
 const EditAdPage = () => {
   const { adId } = useParams();
   const [formData, setFormData] = useState({
-    id: adId,
+    adId: adId,
     title: '',
     price: 0,
     description: '',
@@ -23,7 +23,7 @@ const EditAdPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await EditAdService(formData.id);
+      await EditAdService(formData);
       navigate("/my-ads", { replace: true });
     } catch (error) {
       console.error('Failed to update ad', error);
@@ -39,53 +39,58 @@ const EditAdPage = () => {
         </h2>
         <form onSubmit={handleSubmit} className="space-y-6">
           <div>
-            <label className="block text-sm font-medium text-gray-600">Title:</label>
+            <label htmlFor='title' className="block text-sm font-medium text-gray-600">Title:</label>
             <input
               className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-indigo-200 focus:border-indigo-500 sm:text-sm"
               type="text"
               name="title"
+              id='title'
               value={formData.title}
               onChange={handleChange}
               required
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-600">Price:</label>
+            <label htmlFor='price' className="block text-sm font-medium text-gray-600">Price:</label>
             <input
               className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-indigo-200 focus:border-indigo-500 sm:text-sm"
               type="number"
               name="price"
+              id='price'
               value={formData.price}
               onChange={handleChange}
               required
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-600">Description:</label>
+            <label htmlFor='description' className="block text-sm font-medium text-gray-600">Description:</label>
             <textarea
               className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-indigo-200 focus:border-indigo-500 sm:text-sm"
               name="description"
+              id='description'
               value={formData.description}
               onChange={handleChange}
               required
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-600">First Registration:</label>
+            <label htmlFor='first_registration' className="block text-sm font-medium text-gray-600">First Registration:</label>
             <input
               className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-indigo-200 focus:border-indigo-500 sm:text-sm"
               type="number"
               name="first_registration"
+              id='first_registration'
               value={formData.first_registration}
               onChange={handleChange}
               required
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-600">Fuel Type:</label>
+            <label htmlFor='fuel_type' className="block text-sm font-medium text-gray-600">Fuel Type:</label>
             <select
               className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-indigo-200 focus:border-indigo-500 sm:text-sm"
               name="fuel_type"
+              id='fuel_type'
               value={formData.fuel_type}
               onChange={handleChange}
             >
@@ -97,10 +102,11 @@ const EditAdPage = () => {
             </select>
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-600">Category:</label>
+            <label htmlFor='category_id' className="block text-sm font-medium text-gray-600">Category:</label>
             <select 
               className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-indigo-200 focus:border-indigo-500 sm:text-sm"
-              name="category_id" 
+              name="category_id"
+              id="category_id"
               value={formData.category_id} 
               onChange={handleChange}
             >
@@ -110,10 +116,11 @@ const EditAdPage = () => {
             </select>
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-600">Sub Category:</label>
+            <label htmlFor='sub_category' className="block text-sm font-medium text-gray-600">Sub Category:</label>
             <select
               className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-indigo-200 focus:border-indigo-500 sm:text-sm"
               name="sub_category"
+              id="sub_category"
               value={formData.sub_category}
               onChange={handleChange}
             >
@@ -126,15 +133,6 @@ const EditAdPage = () => {
               <option value="6">Minivan</option>
               <option value="7">Cargo</option>
             </select>
-          </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-600">Images:</label>
-            <input
-              className="mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:border file:border-gray-300 file:rounded-md file:text-sm file:font-medium file:bg-gray-50 file:text-gray-700 hover:file:bg-gray-100"
-              type="file"
-              name="images"
-              multiple
-            />
           </div>
           <button
           className="w-full py-2 px-4 bg-indigo-600 text-white font-semibold rounded-lg shadow-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"

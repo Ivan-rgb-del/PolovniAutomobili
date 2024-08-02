@@ -1,14 +1,10 @@
-export const EditAdService = async ({adId}) => {
-  if (adId) {
-    throw new Error('Missing ad ID');
-  }
-
-  const response = await fetch(`http://localhost/PolovniAutomobili/backend/api/editAd.php?adId=${adId}`, {
+export const EditAdService = async (formData) => {
+  const response = await fetch(`http://localhost/PolovniAutomobili/backend/api/editAd.php?adId=${formData.adId}`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify(adId),
+    body: JSON.stringify(formData),
   });
 
   if (!response.ok) {

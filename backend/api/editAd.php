@@ -26,31 +26,26 @@
     exit;
   }
 
+  $data = json_decode(file_get_contents('php://input'), true);
+  error_log("Received data: " . print_r($data, true));
+
+  if (!$data) {
+    http_response_code(400);
+    echo json_encode(["message" => "Bad Request. Missing or invalid JSON data."]);
+    exit;
+  }
+
+  $title = $data['title'] ?? '';
+  $price = $data['price'] ?? 0;
+  $description = $data['description'] ?? '';
+  $first_registration = $data['first_registration'] ?? 0;
+  $fuel_type = $data['fuel_type'] ?? '';
+  $category_id = $data['category_id'] ?? 1;
+  $sub_category = $data['sub_category'] ?? 1;
+  $imageUrl = "image.jpg";
+
   if ($_SERVER['REQUEST_METHOD'] === 'PUT') {
-    $data = json_decode(file_get_contents('php://input'), true);
-
-    if (json_last_error() !== JSON_ERROR_NONE) {
-      http_response_code(400);
-      echo json_encode(["message" => "Bad Request. Invalid JSON."]);
-      exit;
-    }
-
-    $title = $data['title'] ?? null;
-    $price = isset($data['price']) ? (int)$data['price'] : null;
-    $description = $data['description'] ?? null;
-    $first_registration = isset($data['first_registration']) ? (int)$data['first_registration'] : null;
-    $fuel_type = $data['fuel_type'] ?? null;
-    $category_id = isset($data['category_id']) ? (int)$data['category_id'] : null;
-    $sub_category = isset($data['sub_category']) ? (int)$data['sub_category'] : null;
-    $imageUrl = "image.jpg";
-
-    if (!$title || !$price || !$description || !$first_registration || !$fuel_type || !$category_id || !$sub_category) {
-      http_response_code(400);
-      echo json_encode(["message" => "Bad Request. Missing required fields."]);
-      exit;
-    }
-
-    $createAd = $adController->editAdvertisement(
+    $result = $adController->editAdvertisement(
       $adId,
       $title,
       $price,
@@ -61,8 +56,7 @@
       $sub_category,
       $imageUrl
     );
-
-    if ($createAd) {
+    if ($result) {
       echo json_encode(['message' => 'Ad updated successfully']);
     } else {
       http_response_code(500);
@@ -70,7 +64,7 @@
     }
   } else {
     http_response_code(405);
-    echo json_encode(['message' => 'Method not allowed']);
+    echo json_encode(['message' => 'Method Not Allowed']);
   }
 
 ?>
