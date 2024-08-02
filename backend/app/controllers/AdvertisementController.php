@@ -73,6 +73,8 @@
         $adImage->advertisementId = $id;
         $this->adImageContract->addImageForAd($adImage);
       }
+
+      return true;
     }
 
     public function getAdId(int $adId) {
