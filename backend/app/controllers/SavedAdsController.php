@@ -21,9 +21,12 @@
 
     public function deleteSavedAd(int $adId) {
       $userIds = $this->savedAdsContract->getUserWhoSavedAd($adId);
+
       foreach ($userIds as $userId) {
         $this->savedAdsContract->deleteSavedAd($userId, $adId);
       }
+
+      return true;
     }
   }
 
